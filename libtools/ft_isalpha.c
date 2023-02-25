@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 16:41:26 by mtellami          #+#    #+#             */
-/*   Updated: 2023/02/24 16:43:47 by mtellami         ###   ########.fr       */
+/*   Created: 2022/10/08 20:10:40 by aelkhali          #+#    #+#             */
+/*   Updated: 2023/02/23 21:56:35 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libtools.h"
 
-int main(int argc, char **argv)
+int	ft_isalpha(int c)
 {
-	t_main	main;
-
-	if (argc != 2)
-		ft_errors("Usage: ./cub3d map.cub");
-	map_parser(argv[1], &main);
-	main.mlx = mlx_init();
-	mlx_loop(main.mlx);
+	if ((c > 64 && c < 91) || (c > 96 && c < 123))
+		return (1);
 	return (0);
 }
