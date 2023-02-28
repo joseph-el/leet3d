@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 18:11:11 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 21:57:32 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:10:19 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,13 @@ void	door(char **map, int i, int j, int m_size[2])
 	ret = 0;
 
 	if (i - 1 >= 0 && i - 1 < m_size[0] && i + 1 >= 0 && i + 1 < m_size[0] && \
-		j - 1 >= 0 && j - 1 < m_size[1] && j + 1 >= 0 && j + 1 < m_size[1
-		])
+		j - 1 >= 0 && j - 1 < m_size[1] && j + 1 >= 0 && j + 1 < m_size[1])
 		ret = (map[i - 1][j] == '1' && map[i + 1][j] == '1') * HORIZONTAL + \
 			(map[i][j - 1] == '1' && map[i][j + 1] == '1') * VERTICAL;
 	if (ret & HORIZONTAL)
-		ret = (map[i][j - 1] == '0' || map[i][j - 1] == '0');
+		ret = (map[i][j - 1] == '0' && map[i][j - 1] == '0');
 	else if (ret & VERTICAL)
-		ret = (map[i + 1][j] == '0' || map[i - 1][j] == '0');
-	else
-		error_(ERR_DOOR, 0, ERROR);
+		ret = (map[i + 1][j] == '0' && map[i - 1][j] == '0');
 	if (!ret)
 		error_(ERR_DOOR, 0, ERROR);
 }

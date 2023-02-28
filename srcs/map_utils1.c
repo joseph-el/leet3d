@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:06:39 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 20:47:24 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:23:32 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void	container_tools(t_parser **container, int flag)
 	i = 0;
 	if (flag & INIT)
 	{
+		(*container)->map = NULL;
 		(*container)->texture = malloc(sizeof(char *) * 5);
 		while (i < 5)
 			(*container)->texture[i++] = NULL;
@@ -61,7 +62,8 @@ void	container_tools(t_parser **container, int flag)
 			((*container)->texture[0]) && \
 			((*container)->texture[1]) && \
 			((*container)->texture[2]) && \
-			((*container)->texture[3]));
+			((*container)->texture[3])) && \
+			((*container)->map != NULL);
 	if ((flag & EXIT) && !ret)
 		error_(ERR_MISSING, 0, ERROR);
 }
@@ -74,7 +76,7 @@ void	analysis_rgb(t_parser **container, char **colors, t_setting flag)
 	while (colors[index])
 	{
 		if (ft_atoi(colors[index]) > 255 || ft_atoi(colors[index]) < 0)
-			return (error_(ERR_ARGS, 0, ERROR));
+			return (error_(ERR_COLORS, 0, ERROR));
 		if (flag & C_C)
 			(*container)->c_ceiling[index] = ft_atoi(colors[index]);
 		if (flag & C_F)
@@ -89,15 +91,12 @@ void	position_(t_parser *data, int i, int j, int m_size[2])
 	if (i - 1 >= 0 && i - 1 < m_size[0])
 		if (!ft_strchr(" 1D", data->map[i - 1][j]) && data->map[i + 1][j])
 			error_(ERR_MAP, 0, ERROR);
-			
 	if (i + 1 >= 0 && i + 1 < m_size[0])
 		if (!ft_strchr(" 1D", data->map[i + 1][j]) && data->map[i + 1][j])
 			error_(ERR_MAP, 0, ERROR);
-			
 	if (j - 1 >= 0 && j - 1 < m_size[1])
 		if (!ft_strchr(" 1D", data->map[i][j - 1]) && data->map[i + 1][j])
 			error_(ERR_MAP, 0, ERROR);
-			
 	if (j + 1 >= 0 && j + 1 < m_size[0])
 		if (!ft_strchr(" 1D", data->map[i][j + 1]) && data->map[i + 1][j])
 			error_(ERR_MAP, 0, ERROR);

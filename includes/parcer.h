@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:49:49 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 20:47:07 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:15:49 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define ERR_MAP "Invalid Map! "
 # define ERR_POSITION "Invalid player position! "
 # define ERR_DOOR "Invalid place for the door! "
+# define ERR_PATH "Missing path of texture! "
 
 typedef enum s_setting
 {

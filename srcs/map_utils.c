@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:01:35 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 20:35:43 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/28 22:15:58 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	set_texture(t_parser **container, char *line, t_setting ret)
 				sizeof("./")))
 			line++;
 		if (!*line || *line != '.')
-			return (error_("error ./", 0, ERROR));
+			return (error_(ERR_PATH, 0, ERROR));
 		(*container)->texture[i] = ft_strndup(line, ft_strlen(line) - 1);
 		fd_texture = open((*container)->texture[i], O_RDONLY);
 		// if (fd_texture == -1)
