@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 21:59:25 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/25 15:28:57 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/25 23:27:24 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@
 
 void    error_(char *error, int errno_s, int flag);
 void    array_destroyer(char **array);
-
-
-typedef struct s_leet3d
-{
-    int nothing;
-}               t_leet3d;
-
-
 
 
 #endif
