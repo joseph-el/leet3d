@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 16:58:27 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 22:21:58 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/02/28 23:31:25 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ t_parser	*parser(char *path)
 	fd_map = open(path, O_RDONLY);
 	if (fd_map == -1)
 		return (error_(path, ENOENT, FATAL | ERROR), NULL);
-	ft_memset(container, 0, sizeof(t_parser));
 	container_tools(&container, INIT);
 	set_data(&container, fd_map);
 	container_tools(&container, CHECK | EXIT);

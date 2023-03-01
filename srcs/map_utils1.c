@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 17:06:39 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 22:23:32 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/01 08:07:40 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,7 @@ void	container_tools(t_parser **container, int flag)
 			((*container)->texture[0]) && \
 			((*container)->texture[1]) && \
 			((*container)->texture[2]) && \
-			((*container)->texture[3])) && \
-			((*container)->map != NULL);
+			((*container)->texture[3])) && ((*container)->map);
 	if ((flag & EXIT) && !ret)
 		error_(ERR_MISSING, 0, ERROR);
 }
