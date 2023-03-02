@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 17:01:35 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/01 08:05:03 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/02 23:22:39 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/02 23:38:43 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/leet3d.h"
+#include "leet3d.h"
 
-t_position	get_size(t_parser *container)
+t_position	get_size(t_parser *container)§
 {
 	t_position	position;
 	int			found;
@@ -30,6 +30,7 @@ t_position	get_size(t_parser *container)
 			{
 				found += 1;
 				position = container->map[i][j];
+				container->map[i][j] = '0';
 				*container->p_indices = i;
 				*(container->p_indices + 1) = j;
 			}

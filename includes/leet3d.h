@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 21:59:25 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/25 23:27:24 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/02 23:18:20 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/02 23:20:08 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <math.h>
 
 # include "../libtools/libtools.h"
-# include "parcer.h"
+# include "parser.h"
 
 # define BLACK "\033[0;30m"
 # define RED "\033[0;31m"

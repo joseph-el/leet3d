@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 17:06:39 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/01 08:07:40 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/02 23:23:14 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/02 23:39:02 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/leet3d.h"
+#include "leet3d.h"
 
 char	**realloc_arrays(char ***arrays, char *new, bool *space)
 {

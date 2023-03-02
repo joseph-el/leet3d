@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/28 18:10:25 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/28 19:44:03 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/02 23:22:23 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/02 23:39:14 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/leet3d.h"
+#include "leet3d.h"
 
 void	array_destroyer(char **array)
 {
