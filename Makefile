@@ -6,7 +6,7 @@
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 23:24:06 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/02 23:40:27 by yoel-idr         ###   ########.fr        #
+#    Updated: 2023/03/03 09:40:12 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC 					:= cc
 RM					:= rm -f
 SRCS 				:= srcs/
 INCLUDES			:= includes/
-HEADERS 			:= parser.h leet3d.h
+HEADERS 			:= parser.h leet3d.h # add ur headers name here
 HEADERS 			:= $(addprefix $(INCLUDES), $(HEADERS))
 
 FLAGS				:= -Wall -Wextra -Werror 
@@ -36,20 +36,25 @@ NO_COLOR    		:= \033[m
 OK_STRING    		:= "[OK]"
 COM_STRING  	    := "Compiling"
 LIBT		 		:= "libtools"
+LEET_3D				:= "leet3d"
 DELETE       		:= "Deleting objects"
+
+
+
+# add VAR FOR Ur SRCS FILES LIKE :
 
 LEET3D_FILE         := leet3d.c
 
 PARSER_FILES        :=  parser/parser.c \
-						parser/map_utils.c
-						parser/map_utils1.c
-						parser/map_utils2.c
+						parser/map_utils.c \
+						parser/map_utils1.c \
+						parser/map_utils2.c \
 
-UTILS_FILES 		:= utils/g_utils.c
+UTILS_FILES 		:= utils/g_utils.c \
 
-FILES 				:=  $(LEET3D_FILE)
-						$(PARSER_FILES)
-						$(UTILS_FILES)
+FILES 				:=  $(LEET3D_FILE) \
+						$(PARSER_FILES) \
+						$(UTILS_FILES)  \
 
 FILES 				:= $(addprefix $(SRCS), $(FILES)) 
 OBJS 				:= $(FILES:%.c=%.o)
@@ -57,26 +62,32 @@ OBJS 				:= $(FILES:%.c=%.o)
 LIBTOOLS_PATH		:= 	libtools/
 LIBTOOLS 			:= $(addprefix $(LIBTOOLS_PATH), libtools.a)
 
+
+
+
+
+
 # rules
 all 				: $(NAME)
-						@printf "%b   %b" "$(GREEN) <leet3d>" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; 
+						@printf "%b   %b" "$(GREEN) $(LEET_3D)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; 
 
 $(NAME) 			:	$(LIBTOOLS) $(OBJS)
-							@$(CC) $(FLAGS) $^ -o $@
+							@$(CC) $(FLAGS) $(XLIB) $^ -o $@
 
 $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 							@make -C  $(LIBTOOLS_PATH) all
 
 .c.o		 		:	$(HEADERS)
 							@printf "%-100.900b\r" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(NO_COLOR)\n";
-							@$(CC) $(FLAGS) $(XLIB) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH)
+							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH)
 
 clean   			:	
-							@printf "   %b %b  %b" "$(BLUE) $(DELETE)" "$(GREEN) <lee3d>" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 
+							@printf "	   %b %b %b\t" "$(BLUE) $(DELETE)" "$(GREEN)       $(LIBT)" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 
+							@printf "   %b %b  %b        " "$(BLUE) $(DELETE)" "$(GREEN)      $(LEET_3D)" "$(OK_COLOR)       $(OK_STRING) \n$(RESET)" 
 							@$(RM) $(OBJS)
 							@make -C $(LIBTOOLS_PATH) clean
 fclean 				:  	clean
-							@printf "\n\n   %b\t\t   %b\n" "$(BLUE) Deleting everything $(RESET)" "$(OK_COLOR)$(OK_STRING) $(RESET)"
+							@printf "%b\t\t   %b\n" "$(BLUE) Deleting everything $(RESET)" "$(OK_COLOR)         $(OK_STRING) $(RESET)"
 							@make -C $(LIBTOOLS_PATH) fclean
 							@$(RM) $(NAME)
 re 					: 	fclean all

@@ -6,13 +6,13 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 23:22:39 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/02 23:38:43 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:23:49 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leet3d.h"
 
-t_position	get_size(t_parser *container)§
+t_position	get_size(t_parser *container)
 {
 	t_position	position;
 	int			found;

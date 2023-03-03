@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 23:40:40 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/02 23:42:20 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/03 09:23:41 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int main(int argc, char **argv)
 {
+    (void)argv;
     if (argc != 2)
         error_(ERR_ARGS, 0, ERROR);
     
