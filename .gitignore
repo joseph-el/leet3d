@@ -5,5 +5,9 @@
 a.out
 *.dSYM
 *.a
-cub
+cub3D
+o_newleet3d.c
+minimap.c
+old_minimap.c
+leet3d.c
 cub3D

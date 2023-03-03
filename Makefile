@@ -6,7 +6,7 @@
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 23:24:06 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/03 09:40:12 by yoel-idr         ###   ########.fr        #
+#    Updated: 2023/03/03 18:31:28 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INCLUDES			:= includes/
 HEADERS 			:= parser.h leet3d.h # add ur headers name here
 HEADERS 			:= $(addprefix $(INCLUDES), $(HEADERS))
 
-FLAGS				:= -Wall -Wextra -Werror 
+FLAGS				:= #-Wall -Wextra -Werror 
 debug 				:= -fsanitize=address -g
 XLIB				:= -lmlx -framework OpenGL -framework AppKit
 
@@ -72,7 +72,7 @@ all 				: $(NAME)
 						@printf "%b   %b" "$(GREEN) $(LEET_3D)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; 
 
 $(NAME) 			:	$(LIBTOOLS) $(OBJS)
-							@$(CC) $(FLAGS) $(XLIB) $^ -o $@
+							@$(CC) $(debug) $(FLAGS) $(XLIB) -pthread $^ -o $@
 
 $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 							@make -C  $(LIBTOOLS_PATH) all
