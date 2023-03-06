@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:45:36 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/05 23:45:31 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/06 10:08:19 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,13 @@ int     loading(t_data *data)
 
 void    mouse_button(int button, int x, int y, t_data *data)
 {
-    unsigned short ret;
+    short ret;
 
+    if (button != 1)
+        return ;
     /**
      * @brief Gen click position [x][y];
     **/
-    ret =    (x > 1123 && y > 360) * MAPS + \
-             (x > 1123 && y < 360) * GAME + \
-             (x > 1123 && y > 360) * ABOUT + \
-             (x > 1123 && y > 360) * TEXTURE + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START + \
-             (x >= 0 && x <= 20 && y >= 0 && y <= 20) * START;
 
     if (data->flag & HOME && ret & (HOME_PAGE | EXIT_G))
         data->flag = ret;
@@ -72,8 +62,13 @@ void    mouse_button(int button, int x, int y, t_data *data)
         set();
     else if (data->flag & MAPS && ret & (SET_MAP | BACK))
         set();
+
+        
     else if (data->flag & GAME && ret & (START | MOVE_LEFT | MOVE_RIGHT))
         set();
+
+
+        
     else if (data->flag & START && ret & (QUIT_G | RESUME))
         set();
     else if (data->flag & SETTING && ret & (CONTROLS | SET_VOLUME | SOUNDS | BACK))
@@ -162,6 +157,66 @@ void    set_setting(t_data *data, t_select flag)
 }
 
 
+unsigned short get_ret(int x, int y, unsigned short flag)
+{
+    unsigned short  ret;
+
+    /**
+     * @brief when flag & (HOME_PAGE | G_EXIT);
+     */
+    ret =    (x > 1123 && y > 360) * MAPS + \
+             (x > 1123 && y < 360) * GAME + \
+             (x > 1123 && y > 360) * ABOUT + \
+             (x > 1123 && y > 360) * TEXTURE + \
+             (x > 1123 && y > 360) * SETTING + \
+             (x > 1123 && y > 360) * G_EXIT;
+    
+    /**
+     * @brief When flag & SETTING
+     */
+    ret =   (x > 1123 && y > 360) * DVOLUME + \
+            (x > 1123 && y > 360) * UVOLUME + \
+            (x > 1123 && y > 360) * MVOLUME + \
+            (x > 1123 && y > 360) * SOUND_EFFECT + \
+            (x > 1123 && y > 360) * CONTROL_A + \
+            (x > 1123 && y > 360) * CONTROL_B + \
+            (x > 1123 && y > 360) * SOUND1 + \
+            (x > 1123 && y > 360) * SOUND2 + \
+            (x > 1123 && y > 360) * SOUND3 + \
+            (x > 1123 && y > 360) * SOUND4;
+    /**
+     * @brief When flag & MAP
+     */
+    ret =   (x > 1123 && y > 360) * MAP1 + \
+            (x > 1123 && y > 360) * MAP2 + \
+            (x > 1123 && y > 360) * MAP3 + \
+            (x > 1123 && y > 360) * MAP4;
+    /**
+     * @brief When flag & TEXTURE
+     */
+    ret =   (x > 1123 && y > 360) * TEXT1 + \
+            (x > 1123 && y > 360) * TEXT2 + \
+            (x > 1123 && y > 360) * TEXT3 + \
+            (x > 1123 && y > 360) * TEXT4; \
+    /**
+     * @brief When flag & GAME
+     */
+    ret =   (x > 1123 && y > 360) * START + \
+            (x > 1123 && y > 360) * MOVE_LEFT + \
+            (x > 1123 && y > 360) * MOVE_RIGHT;
+    /**
+     * @brief when flag & START
+     */
+    ret =   (x > 1123 && y > 360) * RESUME + \
+            (x > 1123 && y > 360) * QUIT_G + \
+            (x > 1123 && y > 360) * SOUND_EFFECT;
+            (x > 1123 && y > 360) * MUTE_SOUND;
+    /**
+     * @brief When flag & (HOME_PAGES)
+     * =====> check effects of back button
+     */
+}
+
 void    mouse_events(int x, int y, t_data *data)
 {
     unsigned short  ret;
@@ -203,12 +258,31 @@ void    home(t_data *data)
     mlx_mouse_hook(data->win, (void *)mouse_button, data);
 }
 
+
+void    mode_game(t_data *data, short flag)
+{
+    int index;
+
+    index = (flag == )
+
+
+
+    
+}
+
+
+
+
+
+
+
 void    starting(t_data *data)
 {
     if (data->flag & LOADING)
         loading(data);
     else if (data->flag & HOME)
         home(data);
+        
     else if (data->flag & (MAPS | ABOUT | TEXTURE))
         mode_game(data, data->flag);
     else if (data->flag & SETTING)
@@ -218,3 +292,8 @@ void    starting(t_data *data)
     else if (data->flag & GAME)
         game();
 }
+
+
+
+
+

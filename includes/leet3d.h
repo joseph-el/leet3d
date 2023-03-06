@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 23:18:20 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/05 23:17:18 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/06 19:11:56 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # include <time.h>
 # include <mlx.h>
 
+# include "libtools.h"
 # include "parser.h"
 
 # define BLACK "\033[0;30m"
@@ -31,6 +32,8 @@
 # define YELLOW "\033[0;33m"
 # define GREEN "\033[0;32m"
 # define WHITE "\033[0;37m"
+
+typedef unsigned long long t_short;
 
 typedef enum s_select
 {
@@ -43,29 +46,34 @@ typedef enum s_select
     TEXT3 = 1 << 6,
     TEXT4 = 1 << 7,
     MOVE_LEFT = 1 << 8,
-    QUIT_G = 1 << 13,
-    MOVE_RIGHT = 1 << 12,
-    RESUME = 1 << 9,
-    EXIT_G = 1 << 10,
-    BACK = 1 << 11,
+    MOVE_RIGHT = 1 << 9,
+    MOVE_UP = 1 << 10,
+    MOVE_DOWN = 1 << 11,
+    QUIT_G = 1 << 12,
+    RESUME = 1 << 13,
+    BACK = 1 << 15,
+    
     DVOLUME = 1 << 16,
     UVOLUME = 1 << 17,
     MVOLUME = 1 << 18,
-    CONTROL_A = 1 << 14,
-    CONTROL_B = 1 << 19,
-    CONTROL_C = 1 << 20,
-    SOUND1 = 1 << 21,
-    SOUND2 = 1 << 22,
-    SOUND3 = 1 << 15,
-    SOUND4 = 1 << 23,
-    SOUND5 = 1 << 24,
+    MSOUND = 1 << 19,
+    MEFFCTS = 1 << 20,
+    USOUND = 1 << 21,
+    UEFFCTS = 1 << 22,
+    CONTROL_A = 1 << 22,
+    CONTROL_B = 1 << 23,
+    SOUND1 = 1 << 24,
+    SOUND2 = 1 << 25,
+    SOUND3 = 1 << 26,
+    SOUND4 = 1 << 27,
     
-    SOUNDS = (SOUND1 | SOUND2 | SOUND3 | SOUND4 | SOUND5),
-    CONTROLS = (CONTROL_A | CONTROL_B | CONTROL_C),
-    SET_VOLUME = (DVOLUME | UVOLUME | MVOLUME),
+    CONTROLS = (CONTROL_A | CONTROL_B),
+    SET_MAP = (MAP1 | MAP2 | MAP3 | MAP4),
+    SOUNDS = (SOUND1 | SOUND2 | SOUND3 | SOUND4),
     SET_TEXTURE = (TEXT1 | TEXT2 | TEXT3 | TEXT4),
-    SET_MAP = (MAP1 | MAP2 | MAP3 | MAP4)
-}              t_select;
+    SET_VOLUME = (DVOLUME | UVOLUME | MVOLUME | MSOUND | MEFFCTS | USOUND | UEFFCTS)
+}           t_select;
+
 
 typedef enum s_flag
 {
@@ -73,7 +81,7 @@ typedef enum s_flag
     GAME = 1 << 1,
     HOME = 1 << 2,
     ABOUT = 1 << 3,
-    START = 1 << 4,
+    G_PAUSE = 1 << 4,
     G_EXIT = 1 << 5,
     LOADING = 1 << 6,
     TEXTURE = 1 << 7,
@@ -87,6 +95,7 @@ typedef struct s_data
     void    *win;
     void    *imgs[10];
     char    **map;
+    void    (*array[7])();
     t_flag  flag;
 }               t_data;
 
