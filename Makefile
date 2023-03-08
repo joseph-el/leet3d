@@ -6,7 +6,7 @@
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/02 23:24:06 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/03 18:31:28 by yoel-idr         ###   ########.fr        #
+#    Updated: 2023/03/08 20:09:56 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,8 @@ DELETE       		:= "Deleting objects"
 
 LEET3D_FILE         := leet3d.c
 
-PARSER_FILES        :=  parser/parser.c \
+PARSER_FILES        :=  start/leet_events.c \
+						parser/parser.c \
 						parser/map_utils.c \
 						parser/map_utils1.c \
 						parser/map_utils2.c \
@@ -79,7 +80,7 @@ $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 
 .c.o		 		:	$(HEADERS)
 							@printf "%-100.900b\r" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(NO_COLOR)\n";
-							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH)
+							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(addprefix $(LIBTOOLS_PATH), libtools.h)
 
 clean   			:	
 							@printf "	   %b %b %b\t" "$(BLUE) $(DELETE)" "$(GREEN)       $(LIBT)" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 

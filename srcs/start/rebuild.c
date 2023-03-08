@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 09:47:34 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/06 12:38:51 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/08 23:40:47 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,58 +15,49 @@
 t_short get_mode(int x, int y)
 {
     t_short ret;
-    /**
-     * @brief HOME PAGE
-     */
-    ret = (x > 1123 && x < 1200 && y >= 0 && y <= 360) * GAME + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MAPS + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * ABOUT + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * G_EXIT + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * SETTING + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * TEXTURE +\
-    /**
-     * @brief SETTING PAGES
-     */
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * BACK + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MSOUND + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * USOUND + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * SOUND1 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * SOUND2 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * SOUND3 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * SOUND4 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * DVOLUME + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * UVOLUME + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MVOLUME + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * UEFFCTS + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MEFFCTS + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * CONTROL_A + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * CONTROL_B + \
-    /**
-     * @brief TEXTURES PAGE | MAPS PAGES
-     */
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * TEXT1 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * TEXT2 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * TEXT3 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * TEXT4 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MAP1 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MAP2 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MAP3 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MAP4 + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * BACK + \
-    /**
-     * @brief GAME PAGE
-     */
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * G_PAUSE + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MOVE_RIGHT + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * MOVE_LEFT + \
-    /**
-     * @brief G_PAUSE PAGES
-     */
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * RESUME + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * QUIT_G + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * CONTROL_A + \
-          (x > 1123 && x < 1200 && y >= 0 && y <= 360) * CONTROL_B;
 
+    ret = (x > 1035 && x < 1193 && y > 455 && y < 486) * GAME + \
+          (x > 1037 && x < 1121 && y > 510 && y < 526) * MAPS + \
+          (x > 1037 && x < 1213 && y > 528 && y < 574) * TEXTURE + \
+          (x > 1037 && x < 1188 && y > 607 && y < 622) * SETTING + \
+          (x > 1037 && x < 1123 && y > 656 && y < 669) * G_EXIT + \
+        // SETTING
+          (x > 281 && x < 400 && y > 165 && y < 205) * EVOLUME + \
+          (x > 404 && x < 522 && y > 165 && y < 205) * MVOLUME + \
+          (x > 281 && x < 400 && y > 265 && y < 300) * ESOUND + \
+          (x > 404 && x < 522 && y > 265 && y < 300) * MSOUND + \
+          (x > 281 && x < 400 && y > 360 && y < 397) * ESFX + \
+          (x > 281 && x < 522 && y > 397 && y < 397) * MSFX + \
+          (x > 299 && x < 355 && y > 447 && y < 488) * UVOLUME + \
+          (x > 444 && x < 497 && y > 446 && y < 489) * DVOLUME + \
+          (x > 236 && x < 308 && y > 536 && y < 588) * SOUND1 + \
+          (x > 314 && x < 378 && y > 536 && y < 588) * SOUND2 + \
+          (x > 385 && x < 446 && y > 536 && y < 588) * SOUND3 + \
+          (x > 453 && x < 520 && y > 536 && y < 588) * SOUND4 + \
+          (x > 584 && x < 872 && y > 286 && y < 432) * CONTROL_A + \
+          (x > 945 && x < 1236 && y > 284 && y < 431) * CONTROL_B + \
+          (x > 792 && x < 1099 && y > 463 && y < 696) * CONTROL_C + \
+          (x > 49 && x < 220 && y > 620 && y < 675) * BACK + \
+        // SELECT MAP | TEXTURES
+          (x > 0 && x < 439 && y > 0 && y < 445) * MAP1 + \
+          (x > 440 && x < 879 && y > 0 && y < 445) * MAP2 + \
+          (x > 0 && x < 439 && y > 450 && y < 719) * MAP3 + \
+          (x > 440 && x < 879 && y > 450 && y < 719) * MAP4 + \
+          (x > 0 && x < 439 && y > 0 && y < 445) * TEXT1 + \
+          (x > 440 && x < 879 && y > 0 && y < 445) * TEXT2 + \
+          (x > 0 && x < 439 && y > 450 && y < 719) * TEXT3 + \
+          (x > 440 && x < 879 && y > 450 && y < 719) * TEXT4 + \
+        // IN GAME
+          (x > 5 && x < 97 && y > 11 && y < 55) * G_PAUSE + \
+          (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_RIGHT + \
+          (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_LEFT + \
+        // PAUSE GAME
+          (x > 536 && x < 758 && y > 231 && y < 306) * RESUME + \
+          (x > 536 && x < 758 && y > 343 && y < 419) * P_CONTRL + \
+          (x > 536 && x < 758 && y >  456 && y < 526) * QUIT_G + \
+          (x > 332 && x < 604 && y > 204 && y < 342) * CNTRL_A + \
+          (x > 675 && x < 951 && y > 200 && y < 340) * CNTRL_B + \
+          (x > 530 && x < 820 && y > 375 && y < 593) * CNTRL_C;
     return (ret);
 }
 
@@ -202,4 +193,69 @@ void    g_render(t_data *data)
         game_events(data, data->flag);
     else if (data->flag & G_EXIT)
         g_exit(data);
+}
+
+
+
+
+
+t_short get_mode(t_flag flag, int x, int y)
+{
+    t_short home;
+    t_short sett;
+    t_short map_tex;
+    t_short game;
+    t_short pause;
+    t_short p_cntrl;
+    t_short ret;
+
+    home = (x > 1035 && x < 1193 && y > 455 && y < 486) * GAME + \
+          (x > 1037 && x < 1121 && y > 510 && y < 526) * MAPS + \
+          (x > 1037 && x < 1213 && y > 528 && y < 574) * TEXTURE + \
+          (x > 1037 && x < 1188 && y > 607 && y < 622) * SETTING + \
+          (x > 1037 && x < 1123 && y > 656 && y < 669) * G_EXIT;
+
+    sett =   (x > 281 && x < 400 && y > 165 && y < 205) * EVOLUME + \
+            (x > 404 && x < 522 && y > 165 && y < 205) * MVOLUME + \
+            (x > 281 && x < 400 && y > 265 && y < 300) * ESOUND + \
+            (x > 404 && x < 522 && y > 265 && y < 300) * MSOUND + \
+            (x > 281 && x < 400 && y > 360 && y < 397) * ESFX + \
+            (x > 281 && x < 522 && y > 397 && y < 397) * MSFX + \
+            (x > 299 && x < 355 && y > 447 && y < 488) * UVOLUME + \
+            (x > 444 && x < 497 && y > 446 && y < 489) * DVOLUME + \
+            (x > 236 && x < 308 && y > 536 && y < 588) * SOUND1 + \
+            (x > 314 && x < 378 && y > 536 && y < 588) * SOUND2 + \
+            (x > 385 && x < 446 && y > 536 && y < 588) * SOUND3 + \
+            (x > 453 && x < 520 && y > 536 && y < 588) * SOUND4 + \
+            (x > 584 && x < 872 && y > 286 && y < 432) * CONTROL_A + \
+            (x > 945 && x < 1236 && y > 284 && y < 431) * CONTROL_B + \
+            (x > 792 && x < 1099 && y > 463 && y < 696) * CONTROL_C + \
+            (x > 49 && x < 220 && y > 620 && y < 675) * BACK;
+        
+    map_tex = (x > 0 && x < 439 && y > 0 && y < 445) * MAP1 + \
+          (x > 440 && x < 879 && y > 0 && y < 445) * MAP2 + \
+          (x > 0 && x < 439 && y > 450 && y < 719) * MAP3 + \
+          (x > 440 && x < 879 && y > 450 && y < 719) * MAP4 + \
+          (x > 0 && x < 439 && y > 0 && y < 445) * TEXT1 + \
+          (x > 440 && x < 879 && y > 0 && y < 445) * TEXT2 + \
+          (x > 0 && x < 439 && y > 450 && y < 719) * TEXT3 + \
+          (x > 440 && x < 879 && y > 450 && y < 719) * TEXT4 + \
+          (x > 49 && x < 220 && y > 620 && y < 675) * BACK;
+    
+    game = (x > 5 && x < 97 && y > 11 && y < 55) * G_PAUSE + \
+          (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_RIGHT + \
+          (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_LEFT;
+
+
+    pause = (x > 536 && x < 758 && y > 231 && y < 306) * RESUME + \
+          (x > 536 && x < 758 && y > 343 && y < 419) * P_CONTRL + \
+          (x > 536 && x < 758 && y >  456 && y < 526) * QUIT_G;
+    
+    p_cntrl = (x > 332 && x < 604 && y > 204 && y < 342) * CNTRL_A + \
+                (x > 675 && x < 951 && y > 200 && y < 340) * CNTRL_B + \
+                (x > 530 && x < 820 && y > 375 && y < 593) * CNTRL_C;
+
+    ret = (flag == HOME) * home + (flag == SETTING) * sett + (flag == MAPS || flag == TEXTURE)\
+     * map_tex + (flag == GAME) * game + (flag == G_PAUSE) * pause + (flag == P_CONTRL) * p_cntrl;
+    return (ret);
 }
