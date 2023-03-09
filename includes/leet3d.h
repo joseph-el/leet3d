@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 23:18:20 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/08 23:47:57 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:08:40 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef enum s_select
     TEXT2 = 1 << 5,
     TEXT3 = 1 << 6,
     TEXT4 = 1 << 7,
+    
     MOVE_LEFT = 1 << 8,
     MOVE_RIGHT = 1 << 9,
     MOVE_UP = 1 << 10,
@@ -59,16 +60,21 @@ typedef enum s_select
     
     UVOLUME = 1 << 12,
     DVOLUME = 1 << 13,
+    
     MVOLUME = 1 << 14,
     EVOLUME = 1 << 15,
+    
     MSOUND = 1 << 16,
     ESOUND = 1 << 17,
+    
     MSFX = 1 << 18,
     ESFX = 1 << 19,
+    
     SOUND1 = 1 << 20,
     SOUND2 = 1 << 21,
     SOUND3 = 1 << 22,
     SOUND4 = 1 << 23,
+    
     CONTROL_A = 1 << 24,
     CONTROL_B = 1 << 25,
     CONTROL_C = 1 << 26,
@@ -84,8 +90,7 @@ typedef enum s_select
     SET_MAP = (MAP1 | MAP2 | MAP3 | MAP4),
     SOUNDS = (SOUND1 | SOUND2 | SOUND3 | SOUND4),
     SET_TEXTURE = (TEXT1 | TEXT2 | TEXT3 | TEXT4),
-    SET_VOLUME = (UVOLUME | DVOLUME | MVOLUME | EVOLUME | \
-                MSOUND | ESOUND | MSFX | ESFX)
+    SET_VOLUME = (UVOLUME | DVOLUME | MVOLUME | EVOLUME | MSOUND | ESOUND | MSFX | ESFX)
 }   t_select;
 
 
@@ -111,6 +116,10 @@ typedef enum s_flag
     
     HOME_PAGE = (SETTING | MAPS | GAME | TEXTURE)
 }               t_flag;
+
+
+
+
 
 typedef struct s_data
 {

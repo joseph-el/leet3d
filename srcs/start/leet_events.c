@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 14:33:01 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/08 23:54:54 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:59:44 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,31 +123,9 @@ t_short get_button(t_flag flag, int x, int y)
     else if (flag & P_CONTRL)
         ret = game_button(x, y, P_CNTRL);
     else if (flag & HOME)
-    {
         ret = game_button(x, y, G_HOME);
-        // puts(RED"IMA-------HERE"WHITE);
-    }
     return (ret);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void    mouse_events(int x, int y, t_data *data)
 {
@@ -157,46 +135,93 @@ void    mouse_events(int x, int y, t_data *data)
     if (data->flag & ~HOME)
         return ;
     ret = get_button(HOME, x, y);
-    img = log2(ret) + 3;
-    printf("check img index |%d|\n", img);
+    img = (ret == MAPS) * 4 + (ret == G_EXIT) * 7 + \
+            (ret == TEXTURE) * 6 + (ret == SETTING) * 5;
+    
     if (ret & (SETTING | MAPS | G_EXIT | TEXTURE))
-    {
-        // puts(RED"+IIIIIIIIIIIIIIIIIIIIIIIII+"WHITE);
         mlx_put_image_to_window(data->mlx, data->win, data->imgs[img], 0, 0);
+    else
+        mlx_put_image_to_window(data->mlx, data->win, *data->imgs, 0, 0);
         
+}
+
+void    g_graphics(t_data *data, t_short ret)
+{
+    if (ret & BACK)
+        return ((void)(data->flag = HOME));
+    if (data->flag & MAPS)
+    {
+        // change map log(2);
     }
+    if (data->flag & TEXTURE)
+    {
+        // selct textures
+    }
+    data->flag = HOME;
+}
+
+const char *volume[] = {
+"volume up",
+"volume down"
+""
+};
+
+void    set_setting(t_data *data, t_short ret)
+{
+    if (ret & CONTROLS)
+        return; // set_moving
+    else if (ret & (UVOLUME | DVOLUME))
+        system("up down");
+    else if (ret & (MVOLUME | EVOLUME))
+        system("OFF ON");
+    else if (ret & (MSOUND | ESOUND))
+        system("ON | OFF sound");
+    else if (ret & (MSFX | ESFX))
+        system("ON | OFF SFX");
+    else if (ret & (SOUND1 | SOUND2 | SOUND3 | SOUND4))
+        system("set sound");
+    else if (ret & BACK)
+        data->flag = HOME;
+}
+
+void    g_pause(t_data *data, t_short ret)
+{
+    if (ret & QUIT_G)
+        data->flag = LOADING;
+    else if (ret & P_CONTRL)
+        data->flag = P_CONTRL;
+    else if (ret & RESUME)
+        data->flag = GAME;
 }
 
 
-// void    mouse_button(int button, int x, int y, t_data *data)
-// {
-//     t_short ret;
+void    mouse_button(int button, int x, int y, t_data *data)
+{
+    t_short ret;
 
-//     if (button != 1)
-//         return ;
+    if (button != 1)
+        return ;
     
-//     // ret = get_mode(x, y);
-    
-//     if (data->flag & HOME && ret & (HOME_PAGE | G_EXIT))
-//         data->flag = ret;
-        
-//     if (data->flag & GAME && ret & (G_PAUSE | MOVE_RIGHT | MOVE_LEFT))
-//         set_gaming(data, ret);
-//     if (data->flag & (MAPS | TEXTURE) && ret & (SET_MAP | SET_TEXTURE | BACK))
-//         game_style(data, ret);
-//     if (data->flag & SETTING && ret & (SET_VOLUME | CONTROLS | SOUNDS))
-//         set_setting(data, ret);
-//     if (data->flag & G_PAUSE && ret & (RESUME | QUIT_G | CONTROLS))
-//         g_pause(data, ret);
-// }
+    ret = get_button(data->flag, x, y);
+    if (data->flag & HOME && ret & (HOME_PAGE | G_EXIT))
+        data->flag = ret;
+    if (data->flag & GAME && ret & (G_PAUSE | MOVE_RIGHT | MOVE_LEFT))
+        set_gaming(data, ret);
+    if (data->flag & (MAPS | TEXTURE) && ret & (SET_MAP | SET_TEXTURE | BACK))
+        game_style(data, ret);
+    if (data->flag & SETTING && ret & (SET_VOLUME | CONTROLS | SOUNDS))
+        set_setting(data, ret);
+    if (data->flag & G_PAUSE && ret & (RESUME | QUIT_G | CONTROLS))
+        g_pause(data, ret);
+}
 
 void    game_events(t_data *data, t_flag flag)
 {
-    int image;
+    int img;
 
-    image = log2(flag);
-    // mlx_clear_window(data->mlx, data->win);
-    // mlx_put_image_to_window(data->mlx, data->win, data->imgs[image], 0, 0);
+    img = log2(flag);
+    if (flag & ~HOME)
+        mlx_put_image_to_window(data->mlx, data->win, data->imgs[img], 0, 0);
     mlx_hook(data->win, 6, 1L << 2, (void *)mouse_events, data);
     // mlx_mouse_hook(data->win, (void *)mouse_button, data);
 }
