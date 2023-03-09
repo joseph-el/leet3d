@@ -1,15 +1,3 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/02 23:24:06 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/08 20:09:56 by yoel-idr         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME			 	:= cub3D
 
 CC 					:= cc
@@ -39,10 +27,6 @@ LIBT		 		:= "libtools"
 LEET_3D				:= "leet3d"
 DELETE       		:= "Deleting objects"
 
-
-
-# add VAR FOR Ur SRCS FILES LIKE :
-
 LEET3D_FILE         := leet3d.c
 
 PARSER_FILES        :=  start/leet_events.c \
@@ -61,7 +45,10 @@ FILES 				:= $(addprefix $(SRCS), $(FILES))
 OBJS 				:= $(FILES:%.c=%.o)
 
 LIBTOOLS_PATH		:= 	libtools/
+
 LIBTOOLS 			:= $(addprefix $(LIBTOOLS_PATH), libtools.a)
+
+
 
 
 

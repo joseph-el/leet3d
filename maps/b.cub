@@ -1,8 +1,0 @@
-NO ./srcs/img/north.xpm 
-EA ./srcs/img/east.xpm
-SO ./srcs/img/south.xpm
-WE ./srcs/img/west.xpm
-F                  1,2,100
-C 8,30,0
-
-11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111

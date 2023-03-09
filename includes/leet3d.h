@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/02 23:18:20 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 17:08:40 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/09 18:19:17 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/09 22:31:41 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,16 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <stdbool.h>
+# include <pthread.h>
 # include <errno.h>
 # include <fcntl.h>
 # include <math.h>
 # include <time.h>
 # include <mlx.h>
+# include <stdbool.h>
 
-
-# include "../libtools/libtools.h"
+// # include "gc_memory.h"
+// # include "libtools.h"
 # include "parser.h"
 
 # define BLACK "\033[0;30m"
@@ -33,7 +35,6 @@
 # define YELLOW "\033[0;33m"
 # define GREEN "\033[0;32m"
 # define WHITE "\033[0;37m"
-
 # define CNTRL 1
 # define PAUSE 2
 # define P_CNTRL 4
@@ -52,24 +53,19 @@ typedef enum s_select
     TEXT2 = 1 << 5,
     TEXT3 = 1 << 6,
     TEXT4 = 1 << 7,
-    
     MOVE_LEFT = 1 << 8,
     MOVE_RIGHT = 1 << 9,
+    
     MOVE_UP = 1 << 10,
     MOVE_DOWN = 1 << 11,
-    
     UVOLUME = 1 << 12,
     DVOLUME = 1 << 13,
-    
     MVOLUME = 1 << 14,
     EVOLUME = 1 << 15,
-    
     MSOUND = 1 << 16,
     ESOUND = 1 << 17,
-    
     MSFX = 1 << 18,
     ESFX = 1 << 19,
-    
     SOUND1 = 1 << 20,
     SOUND2 = 1 << 21,
     SOUND3 = 1 << 22,
@@ -78,64 +74,65 @@ typedef enum s_select
     CONTROL_A = 1 << 24,
     CONTROL_B = 1 << 25,
     CONTROL_C = 1 << 26,
-    
     BACK = 1 << 27,
     RESUME = 1 << 28,
     QUIT_G = 1 << 29,
     CNTRL_A = 1 << 31,
     CNTRL_B = 1 << 32,
     CNTRL_C = 1 << 33,
-    
     CONTROLS = (CONTROL_A | CONTROL_B | CONTROL_C),
     SET_MAP = (MAP1 | MAP2 | MAP3 | MAP4),
     SOUNDS = (SOUND1 | SOUND2 | SOUND3 | SOUND4),
     SET_TEXTURE = (TEXT1 | TEXT2 | TEXT3 | TEXT4),
     SET_VOLUME = (UVOLUME | DVOLUME | MVOLUME | EVOLUME | MSOUND | ESOUND | MSFX | ESFX)
-}   t_select;
-
+}           t_select;
 
 typedef enum s_flag
 {
     HOME = 1 << 0,
     
     MAPS = 1 << 1,
-    
-    SETTING = 1 << 2,
-    
-    TEXTURE = 1 << 3,
-    
-    G_PAUSE = 1 << 4,
 
+    SETTING = 1 << 2,
+
+    TEXTURE = 1 << 3,
+
+    G_PAUSE = 1 << 4,
+    
     P_CONTRL = 1 << 5,
 
     LOADING = 1 << 6,
-    
+
     GAME = 1 << 7,
     
     G_EXIT = 1 << 8,
-    
     HOME_PAGE = (SETTING | MAPS | GAME | TEXTURE)
 }               t_flag;
 
-
-
-
-
-typedef struct s_data
+typedef struct s_sound
 {
-    void    *mlx;
-    void    *win;
-    void    *imgs[20];
-    char    **map;
-    void    (*array[7])();
-    t_flag  flag;
-}               t_data;
+    bool    sound;
+    bool    sfx;
+    bool    general;
+    bool    up;
+    bool    down;
+    bool    sound1;
+    bool    sound2;
+    bool    sound3;
+    bool    sound4;
+}               t_sound;
 
-
-
+typedef struct  s_leet
+{
+    void        *mlx;
+    void        *window;
+    void        *img[38];
+    t_flag      flag;
+    t_sound     sound;
+    t_parser    *parser;
+}               t_leet;
 
 void    error_(char *error, int errno_s, int flag);
 void    array_destroyer(char **array);
 
-
-#endif
+# endif

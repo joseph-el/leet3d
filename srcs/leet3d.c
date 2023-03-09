@@ -5,59 +5,109 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/05 18:09:12 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 16:00:25 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/09 18:18:01 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/09 22:34:32 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "leet3d.h"
 
+/**
+ * @brief Get the assets object
+ * @ 7 * (4) = 28 img
+ * img += 10
+ * @param leet 
+ */
 
-void    g_render(t_data *data);
-
-void    get_path(t_data *data)
+void    get_assets(t_leet *leet)
 {
     int height;
     int width;
+    
+    leet->img[0] = mlx_xpm_file_to_image(leet->mlx, "./assets/home.xpm", &width, &height);
+    leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);
+    leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
+    leet->img[6] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
+    leet->img[5] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
+    leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
+    leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/pause.xpm", &width, &height);
+    leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/cntrl_pause.xpm", &width, &height);
+    // <=> loading images :
+    // leet->img[0] = mlx_xpm_file_to_image(leet->mlx, "./assets/home.xpm", &width, &height);
+    // leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);
+    // leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
+    // leet->img[6] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
+    // leet->img[5] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
+    // leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
+    // leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/pause.xpm", &width, &height);
+    // leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/cntrl_pause.xpm", &width, &height);
+    // leet->img[0] = mlx_xpm_file_to_image(leet->mlx, "./assets/home.xpm", &width, &height);
+    // leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);
+    // leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
+    // leet->img[6] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
+    // leet->img[5] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
+    // leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
+    // leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/pause.xpm", &width, &height);
+    // leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/cntrl_pause.xpm", &width, &height);
+    // leet->img[0] = mlx_xpm_file_to_image(leet->mlx, "./assets/home.xpm", &width, &height);
+    // leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
+    // leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);
+    // leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
+    // leet->img[6] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
+    // leet->img[5] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
+    // leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
+}
 
-    /**
-     * ret = log2(flag);
-     *          0 1 2 3
-     */
-    data->imgs[0] = mlx_xpm_file_to_image(data->mlx, "./pictures/home.xpm", &width, &height);
-    data->imgs[1] = mlx_xpm_file_to_image(data->mlx, "./pictures/map.xpm", &width, &height);
-    data->imgs[2] = mlx_xpm_file_to_image(data->mlx, "./pictures/map.xpm", &width, &height);
-    data->imgs[3] = mlx_xpm_file_to_image(data->mlx, "./pictures/settings.xpm", &width, &height);
+void    *sound(void *ptr)
+{
+    t_leet *leet;
     
-    data->imgs[4] = mlx_xpm_file_to_image(data->mlx, "./pictures/effmap.xpm", &width, &height);
-    data->imgs[6] = mlx_xpm_file_to_image(data->mlx, "./pictures/efftextu.xpm", &width, &height);
-    data->imgs[5] = mlx_xpm_file_to_image(data->mlx, "./pictures/effsetting.xpm", &width, &height);
-    data->imgs[7] = mlx_xpm_file_to_image(data->mlx, "./pictures/effexit.xpm", &width, &height);
-    
-    data->imgs[8] = mlx_xpm_file_to_image(data->mlx, "./pictures/pause.xpm", &width, &height);
-    data->imgs[9] = mlx_xpm_file_to_image(data->mlx, "./pictures/cntrl_pause.xpm", &width, &height);
+    leet = (t_leet *)ptr;
+    while (true)
+    {
+        if (!leet->sound.general)
+            system("osascript -e set volume output volume 0");
+        if (leet->sound.general_on)
+            system("osascript -e set volume output volume 50");
+        if (leet->sound.up)
+            system("osascript -e set volume output volume (output volume of (get volume settings) + 10)");
+        if (leet->sound.down)
+            system("osascript -e set volume output volume (output volume of (get volume settings) - 10)");
+        
+        if (leet->sound.sound1 && leet->sound.sound)
+            system("afplay /sounds/sound1.mp4");
+
+    }
+    return (NULL);
 }
 
 
 int main(int argc, char **argv)
 {
-    t_data data;
+    t_leet      leet;
+    pthread_t   pid;
 
     if (argc != 2)
         error_(ERR_ARGS, 0, ERROR);
-    ft_memset(&data, 0, sizeof(t_data));
-    data.mlx = mlx_init();
-    data.win = mlx_new_window(data.mlx, 1280, 720, "leet3d");
+    argv ++;
+    leet.parser = parser(*argv);
+    get_assets(&leet);
+    leet.mlx = mlx_init();
+    leet.window = mlx_new_window(leet.mlx, 1280, 720, "Cub3d");
     
-    get_path(&data);
-    // void *usa;
-    // int test, seg;
-    // usa = mlx_xpm_file_to_image(data.mlx, "./assets/lol.xpm", &test, &seg);
-
-    mlx_put_image_to_window(data.mlx, data.win, *data.imgs, 0, 0);
     
-    // data.flag = LOADING;
-    mlx_loop_hook(data.mlx, (void *)g_render, &data);
-    mlx_loop(data.mlx);
+    
+    pthread_create(&pid, NULL, sound, &leet);
+    
+    mlx_put_image_to_window(leet.mlx, leet.window, *leet.img, 0, 0);
+    mlx_loop_hook(leet.mlx, (void *)g_render, &leet);
+    mlx_loop(leet.mlx);
     exit(EXIT_SUCCESS);
 }
