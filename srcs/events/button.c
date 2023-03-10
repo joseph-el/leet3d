@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 19:58:06 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 19:59:16 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/10 14:11:03 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/10 22:10:31 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "leet3d.h"
 
-t_short setting_button(int x, int y)
+static t_short setting_button(int x, int y)
 {
     t_short button;
     
@@ -35,7 +35,7 @@ t_short setting_button(int x, int y)
     return (button);
 }
 
-t_short graphics_button(t_flag flag, int x, int y)
+static t_short graphics_button(t_flag flag, int x, int y)
 {
     t_short butt;
     
@@ -55,15 +55,15 @@ t_short graphics_button(t_flag flag, int x, int y)
     return (butt);
 }
 
-t_short game_button(int x, int y, int flag)
+static t_short game_button(int x, int y, int flag)
 {
     t_short butt;
 
     if (flag & P_GAME)
     {
         butt = (x > 5 && x < 97 && y > 11 && y < 55) * G_PAUSE + \
-               (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_RIGHT + \
-               (x > 0 && x < 0 && y > 0 && y < 0) * MOVE_LEFT;
+               (x > 955 && x < 1260 && y > 174 && y < 520) * MOVE_RIGHT + \
+               (x > 11 && x < 325 && y > 174 && y < 520) * MOVE_LEFT;
         return (butt);
     }
     if (flag & PAUSE)
@@ -92,6 +92,7 @@ t_short get_button(t_flag flag, int x, int y)
 {
     t_short ret;
 
+    ret = 0;
     if (flag & SETTING)
         ret = setting_button(x, y);
     else if (flag & (MAPS | TEXTURE))

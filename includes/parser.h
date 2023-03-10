@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 18:19:09 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 18:45:45 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/10 14:06:04 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/10 16:08:38 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,16 @@
 
 # include "leet3d.h"
 
-# define ERROR 1
-# define FATAL 2
 # define INIT 16
 # define CHECK 8
 # define EXIT 32
 # define NL 10
-
 # define LAST 16
 # define FIRST 4
 # define SPACE 32
 # define VERTICAL 14
 # define HORIZONTAL 32
 # define MAP_KEY "01 NSEWD"
-
 # define ERR_MISSING "Missing something! "
 # define ERR_KEY "Invalid Key! "
 # define ERR_ARGS "Bad Argument! "
@@ -68,26 +64,22 @@ typedef struct s_parcer
 	t_position	position;
 }				t_parser;
 
-// t_parser		*parser(char *path);
-// t_setting		key(char *line);
-// t_position		get_size(t_parser *container);
+t_parser		*parser(char *path);
+t_setting		key(char *line);
+t_position		get_size(t_parser *container);
+bool			extensions(char *path);
+int				space(char *line, int flag);
+char			**map_size(t_parser **container);
+char			**realloc_arrays(char ***arrays, char *new_, bool *space);
+void			analysis_map(t_parser *data);
+void			set_data(t_parser **container, int fd_map);
+void	        door(char **map, int i, int j, int m_size[2]);
+void			container_tools(t_parser **container, int flag);
+void			position_(t_parser *data, int i, int j, int m_size[2]);
+void			set_texture(t_parser **container, char *line, t_setting ret);
+void			set_colors(t_parser **container, char *line, t_setting flag);
+void			checkup_line(t_parser *data, char *line, int index, int flag);
+void			analysis_rgb(t_parser **container, char **colors,
+					t_setting flag);
 
-// bool			extensions(char *path);
-
-// int				space(char *line, int flag);
-
-// char			**map_size(t_parser **container);
-// char			**realloc_arrays(char ***arrays, char *new_, bool *space);
-// void			analysis_map(t_parser *data);
-// void			set_data(t_parser **container, int fd_map);
-// void	        door(char **map, int i, int j, int m_size[2]);
-// void			container_tools(t_parser **container, int flag);
-// void			position_(t_parser *data, int i, int j, int m_size[2]);
-// void			set_texture(t_parser **container, char *line, t_setting ret);
-// void			set_colors(t_parser **container, char *line, t_setting flag);
-// void			checkup_line(t_parser *data, char *line, int index, int flag);
-// void			analysis_rgb(t_parser **container, char **colors,
-// 					t_setting flag);
-					
-// void	array_p(char **argv);
-#endif
+# endif

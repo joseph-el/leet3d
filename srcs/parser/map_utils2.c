@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:47:12 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 19:47:31 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:22:31 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**map_size(t_parser **container)
 			ret[size][i++] = ' ';
 		ret[size][i] = 0;
 	}
-	return (array_destroyer((*container)->map), ret);
+	return (array_destroyer(&(*container)->map), ret);
 }
 
 void	door(char **map, int i, int j, int m_size[2])

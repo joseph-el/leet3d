@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:11 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/09 19:46:26 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/10 16:22:21 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	**realloc_arrays(char ***arrays, char *new, bool *space)
 	while ((*arrays)[++i])
 		ret[i] = ft_strdup((*arrays)[i]);
 	ret[i++] = new;
-	return (array_destroyer(*arrays), ret[i] = NULL, ret);
+	return (array_destroyer(arrays), ret[i] = NULL, ret);
 }
 
 void	container_tools(t_parser **container, int flag)
@@ -82,7 +82,7 @@ void	analysis_rgb(t_parser **container, char **colors, t_setting flag)
 			(*container)->c_floor[index] = ft_atoi(colors[index]);
 		index++;
 	}
-	array_destroyer(colors);
+	array_destroyer(&colors);
 }
 
 void	position_(t_parser *data, int i, int j, int m_size[2])
