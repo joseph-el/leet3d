@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:18:14 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 23:48:39 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 16:39:36 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,16 @@ void    set_setting(t_leet *leet, t_short ret)
         leet->sound.sfx = (ret == ESFX);
     else if (ret & (SOUND1 | SOUND2 | SOUND3 | SOUND4))
     {
-        leet->sound.sound1 = (ret == SOUND1);
-        leet->sound.sound2 = (ret == SOUND2);
-        leet->sound.sound4 = (ret == SOUND3);
-        leet->sound.sound4 = (ret == SOUND4);
-        system("")
+        leet->sound.odoor = (ret == SOUND1);
+        leet->sound.cdoor = (ret == SOUND2);
+        leet->sound.run = (ret == SOUND3);
+        leet->sound.shot = (ret == SOUND4);
     }
     else if (ret & BACK)
         leet->flag = HOME;
 }
+
+
 
 void    g_graphics(t_leet *leet, t_short ret)
 {
@@ -69,7 +70,13 @@ void    g_graphics(t_leet *leet, t_short ret)
         return ((void)(leet->flag = HOME));
     if (leet->flag & MAPS && ret & SET_MAP)
     {
-        // X,Y of player | direction
+        leet->parser->position = WEST;
+        leet->parser->p_indices[0] = (ret == MAP1) * Y_MAP1 + \
+            (ret == MAP2) * Y_MAP2 + (ret == MAP3) * Y_MAP3 + \
+            (ret == MAP4) * Y_MAP4;
+        leet->parser->p_indices[1] = (ret == MAP1) * X_MAP1 + \
+            (ret == MAP2) * X_MAP2 + (ret == MAP3) * X_MAP3 + \
+            (ret == MAP4) * X_MAP4;
         array_destroyer(&leet->parser->map);
         leet->parser->map = NULL;
         leet->parser->map = switch_map(ret);

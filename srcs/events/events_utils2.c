@@ -6,19 +6,20 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:18:57 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 18:52:22 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 18:49:39 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "leet3d.h"
 
-int     g_loading(t_leet *leet)
+int     g_loading(t_leet *leet, int flag)
 {
     static clock_t  l_time;
     static int      crr_img = 10;
     clock_t         r_time;
 
     r_time = clock();
+    (void)flag;
     if (r_time - l_time / CLOCKS_PER_SEC > 4)
     {
         if (crr_img == 17)
@@ -26,7 +27,7 @@ int     g_loading(t_leet *leet)
         mlx_clear_window(leet->mlx, leet->window);
         mlx_put_image_to_window(leet->mlx, leet->window, leet->img[crr_img++], 0, 0);
     }
-    usleep(400000);
+    usleep(400);
     l_time = clock();
     return (EXIT_SUCCESS);
 }

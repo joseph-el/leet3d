@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:59:38 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 16:15:58 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/12 10:47:25 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 # define _MOVE_RIGHT 32
 # define ROTATE_LEFT 2
 # define ROTATE_RIGHT 1
+# define MINIMAP_H 200
+# define MINIMAP_W 200
+# define SCOPE 13
 
 enum e_hit
 {

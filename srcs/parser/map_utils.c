@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 18:46:17 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 14:24:58 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:45:24 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ void	set_data(t_parser **container, int fd_map)
 			set_colors(container, line + (i + 2), ret);
 		else if (ret & M_KEY)
 			(**container).map = realloc_arrays(&(**container).map, \
-			ft_strndup(line, ft_strlen(line) - 1), &sp);
+			ft_strdup(line), &sp);
 		free(line);
 		line = get_next_line(fd_map);
 	}
@@ -131,4 +131,6 @@ void	analysis_map(t_parser *data)
 		checkup_line(data, data->map[i], i, SPACE);
 		i++;
 	}
+	data->width = ft_strlen(*data->map);
+	data->height = i;
 }

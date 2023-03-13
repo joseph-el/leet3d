@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:17:05 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 22:06:59 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 11:47:09 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void    mouse_move(int button, int x, int y, t_leet *leet)
 void    key_events(int key, t_leet *leet)
 {
     int ret;
-    
+
     if (key == 53)
         exit(47); // check exxit()
     ret = 0;

@@ -6,7 +6,7 @@
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/10 14:57:49 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/10 16:31:48 by yoel-idr         ###   ########.fr        #
+#    Updated: 2023/03/13 18:42:34 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS 				:= srcs/
 INCLUDES			:= includes/
 HEADERS 			:= parser.h leet3d.h raycasting.h
 HEADERS 			:= $(addprefix $(INCLUDES), $(HEADERS))
-FLAGS				:= -Wall -Wextra -Werror -fsanitize=address -g
+FLAGS				:= -Wall -Wextra -Werror 
 XLIB				:= -lmlx -framework OpenGL -framework AppKit
 
 COM_COLOR   		:= \033[0;34m
@@ -44,11 +44,12 @@ EVENTS_FILES		:=  events/events.c \
 						events/events_utils2.c \
 						events/button.c \
 
-RAYCASTING_FILES	:=  raycasting/_angle.c \
+RAYCASTING_FILES	:=  raycasting/minimap.c \
+						raycasting/minimap_utils.c \
+						raycasting/_angle.c \
 						raycasting/_direction.c \
 						raycasting/has_wall_at.c \
 						raycasting/horizontal_raycast.c \
-						raycasting/initialize.c \
 						raycasting/moves.c \
 						raycasting/raycasting.c \
 						raycasting/render.c \
@@ -56,12 +57,16 @@ RAYCASTING_FILES	:=  raycasting/_angle.c \
 						raycasting/wall_pixel.c \
 						raycasting/wall_render.c \
 
-ERROR_FILES			:=  errors/destroy.c \
-						errors/error.c \
+UTILS				:=  utils/enemy.c \
+						utils/enemy_utils.c \
+						utils/initialize.c \
+						utils/destroy.c \
+						utils/error.c \
+						utils/sound.c \
 
 FILES				:=  $(PARSER_FILES) \
 						$(LEET3D_FILE) \
-						$(ERROR_FILES) \
+						$(UTILS) \
 						$(LEET3D_FILE) \
 						$(EVENTS_FILES) \
 						$(RAYCASTING_FILES) \
@@ -77,7 +82,6 @@ all 				: $(NAME)
 
 $(NAME) 			:	$(LIBTOOLS) $(OBJS)
 							@$(CC) $(debug) $(FLAGS) $(XLIB) -pthread $^ -o $@
-
 $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 							@make -C  $(LIBTOOLS_PATH) all
 

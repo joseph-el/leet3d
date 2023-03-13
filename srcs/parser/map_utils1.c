@@ -6,25 +6,29 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:46:11 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 16:22:21 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/12 12:47:24 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "leet3d.h"
 
-char	**realloc_arrays(char ***arrays, char *new, bool *space)
+char	**realloc_arrays(char ***arrays, char *line, bool *space)
 {
 	char	**ret;
+	char	*new;
 	int		i;
 
 	i = -1;
 	*space = false;
+	new = line;
+	if (line[ft_strlen(line) - 1] == NL)
+		(new = ft_strndup(line, ft_strlen(line) - 1), free(line));
 	if (!*arrays)
 	{
 		ret = malloc(sizeof(char *) * 2);
 		if (!ret)
 			return (error_(NULL, ENOMEM, FATAL), NULL);
-		return (ret[0] = ft_strdup(new), ret[1] = NULL, ret);
+		return (ret[0] = new, ret[1] = NULL, ret);
 	}
 	while ((*arrays)[++i])
 		;

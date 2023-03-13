@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 14:06:04 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/10 16:08:38 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/12 13:02:13 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define SPACE 32
 # define VERTICAL 14
 # define HORIZONTAL 32
-# define MAP_KEY "01 NSEWD"
+# define MAP_KEY "01 NSEWDZ"
 # define ERR_MISSING "Missing something! "
 # define ERR_KEY "Invalid Key! "
 # define ERR_ARGS "Bad Argument! "
@@ -61,6 +61,8 @@ typedef struct s_parcer
 	int			c_floor[3];
 	int			c_ceiling[3];
 	int			p_indices[2];
+	int			height;
+	int			width;
 	t_position	position;
 }				t_parser;
 
