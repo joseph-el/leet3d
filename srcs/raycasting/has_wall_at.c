@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:53:02 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/14 13:40:09 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:01:46 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	map_has_wall_at(char **map, double x, double y)
 	if (_out_range(map, x, y))
 		return (OUT_RANGE);
 	if (map[i][j] == '0' || map[i][j] == 'O')
-		return (SPACE);
+		return (_SPACE);
 	else if (map[i][j] == 'D')
 		return (DOOR);
 	else if (map[i][j] == 'Z')

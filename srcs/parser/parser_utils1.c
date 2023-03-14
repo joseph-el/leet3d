@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:21:48 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 08:30:29 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 15:38:24 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_position	get_position(t_parser *container)
 				position = container->map[i][j];
 				container->map[i][j] = '0';
 				*container->p_indices = i;
-				*(container->p_indices + 1) = j;
+				container->p_indices[1] = j;
 			}
 		}
 	}

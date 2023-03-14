@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:31:02 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 09:25:21 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:43:28 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,9 @@ typedef struct  s_leet
 {
     void            *mlx;
     void            *window;
-    void            *img[17];
+    void            *img[39];
+    int             crr_img;
+    clock_t         l_time;
     t_flag          flag;
     t_sound         sound;
     t_parser        *parser;
@@ -233,7 +235,6 @@ void    ft_exit(void);
 void    game(t_leet *leet);
 void    g_render(t_leet *leet);
 void	g_moving(t_leet *leet, int flag);
-int     g_loading(t_leet *leet, int flag);
 void    key_events(int key, t_leet *leet);
 void    g_pause(t_leet *leet, t_short ret);
 void    p_control(t_leet *leet, t_short ret);
@@ -241,6 +242,7 @@ void    g_graphics(t_leet *leet, t_short ret);
 void    set_setting(t_leet *leet, t_short ret);
 void    game_events(t_leet *leet, t_flag flag);
 void    mouse_events(int x, int y, t_leet *leet);
+void    g_loading(t_leet *leet, int flag, int destination);
 void    mouse_move(int button, int x, int y, t_leet *leet);
 void    mouse_button(int button, int x, int y, t_leet *leet);
 t_short get_button(t_flag flag, int x, int y);

@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 11:09:18 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 11:22:52 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:04:04 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void    setting_sounds(t_sound *sound)
         (system(S_KILL), system(S_SOUND4), sound->is_run = 1);
     return ;
 }
-
 
 void    *sound_(void *ptr)
 {

@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:19:17 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 10:21:35 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:01:29 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 typedef enum e_hit
 {
-	SPACE_,
+	_SPACE,
 	WALL,
 	DOOR,
 	ENEMY,

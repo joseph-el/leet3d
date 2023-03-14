@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   _direction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:39:55 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/13 22:47:21 by mtellami         ###   ########.fr       */
+/*   Updated: 2023/03/14 20:36:44 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	_direction(double angle, enum e_direction look)
 		return (angle < M_PI);
 	else if (look == FACING_RIGHT)
 		return (angle >= 1.5 * M_PI || angle <= 0.5 * M_PI);
-	else if (look == FACING_DOWN)
+	else if (look == FACING_LEFT)
 		return (angle > 0.5 * M_PI && angle < 1.5 * M_PI);
 	return (-1);
 }

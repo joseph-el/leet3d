@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:45:50 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 13:35:19 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 22:03:50 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@
  * @brief Sounds
  */
 
-# define S_RUN "afplay ./sounds/run1.mp3 &" 
-# define S_SHOT "afplay ./sounds/shoot.mp3 &" 
+# define S_RUN "afplay ./sounds/run1.mp3" 
+# define S_SHOT "afplay ./sounds/shoot.mp3" 
 # define S_CLICK "afplay ./sounds/click.mp3 &"
-# define S_ODOOR "afplay ./sounds/odoor.mp3 &" 
-# define S_CDOOR "afplay ./sounds/cdoor.mp3 &" 
-# define S_DAMAGE "afplay ./sounds/damage.mp3 &"
+# define S_ODOOR "afplay ./sounds/odoor.mp3" 
+# define S_CDOOR "afplay ./sounds/cdoor.mp3" 
+# define S_DAMAGE "afplay ./sounds/damage.mp3"
 
 # define S_SOUND4 "afplay ./sounds/music4.mp3 &" 
 # define S_SOUND1 "afplay ./sounds/music1.mp3 &" 
@@ -63,6 +63,7 @@
 # define UNMUTE "osascript -e \"set volume without output muted\""
 # define UP "osascript -e \"set volume output volume (output volume of (get volume settings) + 10)\""
 # define DOWN "osascript -e \"set volume output volume (output volume of (get volume settings) - 10)\""
+
 # define S_KILL "ps -ef | grep -E \"afplay | afplay | afplay afplay\" | awk \'{print $2}\' | xargs kill -9 2>/dev/null"
 
 # define KILL_SOUND "ps -ef | grep -E \"music1.mp3\" | awk \'{print $2}\' | xargs kill -9 2>/dev/null ;" \
