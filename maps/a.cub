@@ -1,8 +1,8 @@
-NO ./textures/redbrick.xpm
-SO ./textures/colorstone.xpm
-WE ./textures/north.xpm
-
+NO ./textures/blue.xpm
+SO ./textures/grey.xpm
+WE ./textures/hitler.xpm
 EA ./textures/wood.xpm
+
 F 115,111,1
 C 124,30,9
 

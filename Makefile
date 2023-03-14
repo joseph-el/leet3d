@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/10 14:57:49 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/13 18:42:34 by yoel-idr         ###   ########.fr        #
+#    Created: 2023/03/14 08:24:23 by yoel-idr          #+#    #+#              #
+#    Updated: 2023/03/14 13:39:57 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS 				:= srcs/
 INCLUDES			:= includes/
 HEADERS 			:= parser.h leet3d.h raycasting.h
 HEADERS 			:= $(addprefix $(INCLUDES), $(HEADERS))
-FLAGS				:= -Wall -Wextra -Werror 
+FLAGS				:= -Wall -Wextra -Werror -fsanitize=address -g
 XLIB				:= -lmlx -framework OpenGL -framework AppKit
 
 COM_COLOR   		:= \033[0;34m
@@ -34,14 +34,14 @@ DELETE       		:= "Deleting objects"
 LEET3D_FILE         := leet3d.c \
 
 PARSER_FILES        :=  parser/parser.c \
-						parser/map_utils.c \
-						parser/map_utils1.c \
-						parser/map_utils2.c \
+						parser/parser_utils1.c \
+						parser/parser_utils2.c \
+						parser/parser_utils3.c \
 
 EVENTS_FILES		:=  events/events.c \
-						events/events_utils.c \
 						events/events_utils1.c \
 						events/events_utils2.c \
+						events/events_utils3.c \
 						events/button.c \
 
 RAYCASTING_FILES	:=  raycasting/minimap.c \
@@ -77,17 +77,23 @@ OBJS 				:= $(FILES:%.c=%.o)
 LIBTOOLS_PATH		:= 	libtools/
 LIBTOOLS 			:= $(addprefix $(LIBTOOLS_PATH), libtools.a)
 
-all 				: $(NAME)
-						@printf "%b   %b" "$(GREEN) $(LEET_3D)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n"; 
+all 				:   $(NAME)
+						@printf "%b   %b" "$(GREEN) $(LEET_3D)" "$(OK_COLOR)$(OK_STRING)$(NO_COLOR)\n";
 
 $(NAME) 			:	$(LIBTOOLS) $(OBJS)
 							@$(CC) $(debug) $(FLAGS) $(XLIB) -pthread $^ -o $@
+
 $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 							@make -C  $(LIBTOOLS_PATH) all
 
 .c.o		 		:	$(HEADERS)
 							@printf "%-100.900b\r" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(NO_COLOR)\n";
 							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH)
+
+
+
+
+
 clean   			:	
 							@printf "	   %b %b %b\t" "$(BLUE) $(DELETE)" "$(GREEN)       $(LIBT)" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 
 							@printf "   %b %b  %b        " "$(BLUE) $(DELETE)" "$(GREEN)      $(LEET_3D)" "$(OK_COLOR)       $(OK_STRING) \n$(RESET)" 
@@ -98,6 +104,11 @@ fclean 				:  	clean
 							@printf "%b\t\t   %b\n" "$(BLUE) Deleting everything $(RESET)" "$(OK_COLOR)         $(OK_STRING) $(RESET)"
 							@make -C $(LIBTOOLS_PATH) fclean
 							@$(RM) $(NAME)
+
 re 					: 	fclean all
 
 .PHONY 				: 	all clean fclean bonus re
+
+
+
+

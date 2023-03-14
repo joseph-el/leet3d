@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 01:37:10 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/13 15:39:02 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 14:27:31 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void    default_setting(t_leet *leet)
 {
+    get_assets(leet);
     leet->flag = LOADING;
     leet->cntrl.control_a = 0;
     leet->cntrl.control_b = 0;
@@ -110,6 +111,7 @@ void    get_assets(t_leet *leet)
     leet->img[14] = mlx_xpm_file_to_image(leet->mlx, "./assets/start5.xpm", &width, &height);
     leet->img[15] = mlx_xpm_file_to_image(leet->mlx, "./assets/start6.xpm", &width, &height);
     leet->img[16] = mlx_xpm_file_to_image(leet->mlx, "./assets/start7.xpm", &width, &height);
+    
     // leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
     // leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/pause.xpm", &width, &height);
     // leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/cntrl_pause.xpm", &width, &height);
@@ -117,13 +119,15 @@ void    get_assets(t_leet *leet)
     // leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
     // leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
     // leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);
-    // leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
+    // 
+        //leet->img[4] = mlx_xpm_file_to_image(leet->mlx, "./assets/effmap.xpm", &width, &height);
     // leet->img[6] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
     // leet->img[5] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
     // leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
     // leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/pause.xpm", &width, &height);
     // leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/cntrl_pause.xpm", &width, &height);
     // leet->img[0] = mlx_xpm_file_to_image(leet->mlx, "./assets/home.xpm", &width, &height);
+    
     // leet->img[1] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
     // leet->img[2] = mlx_xpm_file_to_image(leet->mlx, "./assets/map.xpm", &width, &height);
     // leet->img[3] = mlx_xpm_file_to_image(leet->mlx, "./assets/settings.xpm", &width, &height);

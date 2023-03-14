@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   _direction.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 12:39:55 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/10 16:03:23 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:47:21 by mtellami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+#include "leet3d.h"
 
 int	_rgb_color(t_rgb rgb)
 {

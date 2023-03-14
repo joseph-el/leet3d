@@ -5,81 +5,105 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:18:57 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/13 18:49:39 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/14 08:38:50 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/14 10:48:54 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "leet3d.h"
 
-int     g_loading(t_leet *leet, int flag)
+void    p_control(t_leet *leet, t_short ret)
 {
-    static clock_t  l_time;
-    static int      crr_img = 10;
-    clock_t         r_time;
-
-    r_time = clock();
-    (void)flag;
-    if (r_time - l_time / CLOCKS_PER_SEC > 4)
+    if (ret & (CNTRL_A | CONTROL_A))
     {
-        if (crr_img == 17)
-            return (crr_img = 10, leet->flag = HOME);
-        mlx_clear_window(leet->mlx, leet->window);
-        mlx_put_image_to_window(leet->mlx, leet->window, leet->img[crr_img++], 0, 0);
+        leet->cntrl.control_c = 0;
+        leet->cntrl.control_b = 0;
+        leet->cntrl.control_a = 1;
     }
-    usleep(400);
-    l_time = clock();
-    return (EXIT_SUCCESS);
+    else if (ret & (CNTRL_B | CONTROL_B))
+    {
+        leet->cntrl.control_c = 0;
+        leet->cntrl.control_a = 0;
+        leet->cntrl.control_b = 1;
+    }
+    else if (ret & (CNTRL_C | CONTROL_C))
+    {
+        leet->cntrl.control_a = 0;
+        leet->cntrl.control_b = 0;
+        leet->cntrl.control_c = 1;
+    }
+    if (ret & (CNTRL_A | CNTRL_B | CNTRL_C))
+        leet->flag = G_PAUSE;
+    leet->sound.click = 1;
 }
 
-char    **switch_map(t_short ret)
+void    set_setting(t_leet *leet, t_short ret)
 {
-    char    **map;
-    char    *line;
-    int     fd_map;
-    int     i;
-
-    if (ret & MAP1)
-        fd_map = open(C_MAP1, O_RDONLY);
-    else if  (ret & MAP2)
-        fd_map = open(C_MAP2, O_RDONLY);
-    else if (ret & MAP3)
-        fd_map = open(C_MAP3, O_RDONLY);
-    else
-        fd_map = open(C_MAP4, O_RDONLY);
-    map = malloc(sizeof(char *) * 50);
-    if (fd_map == -1 || !map)
-        error_(NULL, ENOMEM, FATAL);
-    line = get_next_line(fd_map);
-    i = 0;
-    while (line)
+    if (ret & CONTROLS)
+        return (p_control(leet, ret));
+    else if (ret & (UVOLUME | DVOLUME))
     {
-        map[i++] = ft_strdup(line);
-        free(line);
-        line = get_next_line(fd_map);
+        leet->sound.up = (ret == UVOLUME);
+        leet->sound.down = (ret == DVOLUME);
     }
-    map[i] = NULL;
-    return (close(fd_map), map);
+    else if (ret & (MVOLUME | EVOLUME))
+        leet->sound.general = (ret == EVOLUME);
+    else if (ret & (MSOUND | ESOUND))
+        leet->sound.sound = (ret == ESOUND);
+    else if (ret & (MSFX | ESFX))
+        leet->sound.sfx = (ret == ESFX);
+    else if (ret & (SOUND1 | SOUND2 | SOUND3 | SOUND4))
+    {
+        leet->sound.sound1 = (ret == SOUND1);
+        leet->sound.sound2 = (ret == SOUND2);
+        leet->sound.sound3 = (ret == SOUND3);
+        leet->sound.sound4 = (ret == SOUND4);
+        leet->sound.is_run = 0;
+    }
+    else if (ret & BACK)
+        leet->flag = HOME;
+    leet->sound.click = 1;
 }
 
-char    **switch_texture(t_short ret)
+void    g_graphics(t_leet *leet, t_short ret)
 {
-    char    **texture;
-    char    **package;
-    int     i;
-
-    package = ft_split(TEXTURES_PACKAGE, 32);
-    texture = malloc(sizeof(char *) * 5);
-    texture[4] = NULL;
-    if (!package || !texture)
-        error_("SSS", ENOMEM, FATAL);
-    i = (ret == TEXT1) * 0 + (ret == TEXT2) * 4 + \
-        (ret == TEXT3) * 8 + (ret == TEXT4) * 12;
-    while (package[i] && i < 5)
+    if (ret & BACK)
+        return ((void)(leet->flag = HOME));
+    if (leet->flag & MAPS && ret & SET_MAP)
     {
-        texture[i] = ft_strdup(package[i]);
-        i ++;
+        leet->parser->position = WEST;
+        leet->parser->p_indices[0] = (ret == MAP1) * Y_MAP1 + \
+            (ret == MAP2) * Y_MAP2 + (ret == MAP3) * Y_MAP3 + \
+            (ret == MAP4) * Y_MAP4;
+        leet->parser->p_indices[1] = (ret == MAP1) * X_MAP1 + \
+            (ret == MAP2) * X_MAP2 + (ret == MAP3) * X_MAP3 + \
+            (ret == MAP4) * X_MAP4;
+        array_destroyer(&leet->parser->map);
+        leet->parser->map = switch_map(ret);
     }
-    array_destroyer(&package);
-    return (texture);
+    if (leet->flag & TEXTURE && ret & SET_TEXTURE)
+    {
+        array_destroyer(&leet->parser->texture);
+        leet->parser->texture = NULL;
+        leet->parser->texture = switch_texture(ret);
+    }
+    leet->flag = HOME;
+    leet->sound.click = 1;
 }
+
+void    g_pause(t_leet *leet, t_short ret)
+{
+    if (ret & QUIT_G)
+        leet->flag = LOADING;
+    else if (ret & P_CONTRL)
+        leet->flag = P_CONTRL;
+    else if (ret & RESUME)
+        leet->flag = GAME;
+    leet->sound.click = 1;
+}
+
+
+
+
+
+

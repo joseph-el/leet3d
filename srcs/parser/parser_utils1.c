@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   parser_utils1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 18:46:17 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/12 12:45:24 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/14 08:21:48 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/14 08:30:29 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+# include "../../includes/leet3d.h"
 
 t_position	get_position(t_parser *container)
 {
@@ -57,8 +57,8 @@ void	set_texture(t_parser **container, char *line, t_setting ret)
 			return (error_(ERR_PATH, 0, ERROR));
 		(*container)->texture[i] = ft_strndup(line, ft_strlen(line) - 1);
 		fd_texture = open((*container)->texture[i], O_RDONLY);
-		// if (fd_texture == -1)
-		// 	return (error_((*container)->texture[i], ENOENT, ERROR | FATAL));
+		if (fd_texture == -1)
+			return (error_((*container)->texture[i], ENOENT, ERROR | FATAL));
 		return ;
 	}
 }

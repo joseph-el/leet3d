@@ -6,11 +6,11 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 03:52:20 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/10 16:03:46 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/14 09:26:37 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+#include "leet3d.h"
 
 t_vector	get_vertical_intercept(t_leet *leet, double rayAngle)
 {
@@ -19,7 +19,8 @@ t_vector	get_vertical_intercept(t_leet *leet, double rayAngle)
 	intercept.x = floor(leet->ray.player.vector.x / TILE_SIZE) * TILE_SIZE;
 	if (_direction(rayAngle, FACING_RIGHT))
 		intercept.x += TILE_SIZE;
-	intercept.y = leet->ray.player.vector.y + (intercept.x - leet->ray.player.vector.x)
+	intercept.y = leet->ray.player.vector.y
+		+ (intercept.x - leet->ray.player.vector.x)
 		* tan(rayAngle);
 	return (intercept);
 }
@@ -39,32 +40,21 @@ t_vector	get_vertical_steps(double rayAngle)
 	return (step);
 }
 
-void	set_vert_check(t_vector *to_check, t_vector next_touch, double rayAngle)
-{
-	to_check->x = next_touch.x;
-	if (_direction(rayAngle, FACING_LEFT))
-		to_check->x--;
-	to_check->y = next_touch.y;
-}
-
-t_vector	vertical_raycast(t_leet *leet, double rayAngle)
+t_vector	vertical_ray_cast(t_leet *leet, double rayAngle)
 {
 	t_vector	step;
-	t_vector	intercept;
 	t_vector	next_touch;
-	t_vector	to_check;
+	double		div;
 
-	next_touch.x = -1;
-	next_touch.y = -1;
-	intercept = get_vertical_intercept(leet, rayAngle);
+	div = 0;
+	if (_direction(rayAngle, FACING_LEFT))
+		div = -1;
+	next_touch = get_vertical_intercept(leet, rayAngle);
 	step = get_vertical_steps(rayAngle);
-	next_touch.x = intercept.x;
-	next_touch.y = intercept.y;
-	while (next_touch.x >= 0 && next_touch.x <= WINDOW_WIDTH
-		&& next_touch.y >= 0 && next_touch.y <= WINDOW_HEIGHT)
+	while (1)
 	{
-		set_vert_check(&to_check, next_touch, rayAngle);
-		if (map_has_wall_at(leet->ray.map.map, to_check.x, to_check.y))
+		if (map_has_wall_at(leet->ray.map.map,
+				next_touch.x + div, next_touch.y))
 			return (next_touch);
 		else
 		{

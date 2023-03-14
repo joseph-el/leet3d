@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:06:04 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/12 13:02:13 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/14 08:19:49 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/14 08:53:54 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,6 @@
 # define PARSER_H
 
 # include "leet3d.h"
-
-# define INIT 16
-# define CHECK 8
-# define EXIT 32
-# define NL 10
-# define LAST 16
-# define FIRST 4
-# define SPACE 32
-# define VERTICAL 14
-# define HORIZONTAL 32
-# define MAP_KEY "01 NSEWDZ"
-# define ERR_MISSING "Missing something! "
-# define ERR_KEY "Invalid Key! "
-# define ERR_ARGS "Bad Argument! "
-# define ERR_EXCT "The input file is missing the .cub extension! "
-# define ERR_COLORS "Invalid Colors format! "
-# define ERR_MAP "Invalid Map! "
-# define ERR_POSITION "Invalid player position! "
-# define ERR_DOOR "Invalid place for the door! "
-# define ERR_PATH "Missing path of texture! "
 
 typedef enum s_setting
 {

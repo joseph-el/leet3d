@@ -5,38 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 13:59:38 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/12 10:47:25 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/14 08:19:17 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/14 10:21:35 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef RAYCASTING_H
+#ifndef RAYCASTING_H
 # define RAYCASTING_H
 
 # include "leet3d.h"
 
-# define TILE_SIZE 32
-# define NUM_RAYS 1280
-# define MOVE_SPEED 5.0
-# define ROTATE_SPEED 5.0
-# define WINDOW_WIDTH 1280
-# define WINDOW_HEIGHT 720
-# define TEXTURE_DIMENTION 32
-# define _MOVE_UP 4
-# define _MOVE_DOWN 16
-# define _MOVE_LEFT 64
-# define _MOVE_RIGHT 32
-# define ROTATE_LEFT 2
-# define ROTATE_RIGHT 1
-# define MINIMAP_H 200
-# define MINIMAP_W 200
-# define SCOPE 13
-
-enum e_hit
+typedef enum e_hit
 {
+	SPACE_,
+	WALL,
+	DOOR,
+	ENEMY,
+	OUT_RANGE,
 	HORIZONTAL_HIT,
 	VERTICAL_HIT,
-};
+}	t_hit;
 
 enum e_direction
 {
@@ -63,16 +51,16 @@ typedef struct s_vector
 {
 	double	x;
 	double	y;
-}	            t_vector;
+}	t_vector;
 
 typedef struct s_ray
 {
-	double	angle;
-	double	x_wall_hit;
-	double	y_wall_hit;
-	double	distance;
-	int		hit_side;
-	int		wall_height;
+	double		angle;
+	t_vector	wall_hit;
+	double		distance;
+	int			wall_height;
+	t_hit		hit_side;
+	t_hit		hit_content;
 }	t_ray;
 
 typedef struct s_rgb
@@ -88,6 +76,7 @@ typedef struct s_player
 	double		fov;
 	t_ray		*rays;
 	t_vector	vector;
+	int			frame;
 }	t_player;
 
 typedef struct s_img
@@ -105,6 +94,9 @@ typedef struct s_map
 	t_img	_south;
 	t_img	_west;
 	t_img	_east;
+	t_img	_enemy;
+	t_img	_door;
+	t_img	*fire;
 	t_rgb	_floor;
 	t_rgb	_ceil;
 	char	**map;
@@ -112,9 +104,9 @@ typedef struct s_map
 
 typedef struct s_raycasting
 {
-    t_map       map;
-    t_img       img;
-    t_player    player;
-}               t_raycasting;
+	t_map		map;
+	t_img		img;
+	t_player	player;
+}	t_raycasting;
 
-# endif
+#endif

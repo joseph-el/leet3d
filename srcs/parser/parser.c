@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 14:10:07 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/12 11:53:50 by yoel-idr         ###   ########.fr       */
+/*   Created: 2023/03/14 08:17:30 by yoel-idr          #+#    #+#             */
+/*   Updated: 2023/03/14 08:30:29 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+# include "../../includes/leet3d.h"
 
 t_parser	*parser(char *path)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   horizontal_raycast.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/03 03:22:54 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/10 16:03:31 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 23:02:04 by mtellami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+#include "leet3d.h"
 
 t_vector	get_horizontal_intercept(t_leet *leet, double rayAngle)
 {
@@ -39,32 +39,21 @@ t_vector	get_horizontal_steps(double rayAngle)
 	return (step);
 }
 
-void	set_horz_check(t_vector *to_check, t_vector next_touch, double rayAngle)
-{
-	to_check->x = next_touch.x;
-	to_check->y = next_touch.y;
-	if (_direction(rayAngle, FACING_UP))
-		to_check->y--;
-}
-
-t_vector	horizontal_raycast(t_leet *leet, double rayAngle)
+t_vector	horizontal_ray_cast(t_leet *leet, double rayAngle)
 {
 	t_vector	step;
-	t_vector	intercept;
 	t_vector	next_touch;
-	t_vector	to_check;
+	double		div;
 
-	next_touch.x = -1;
-	next_touch.y = -1;
-	intercept = get_horizontal_intercept(leet, rayAngle);
+	div = 0;
+	if (_direction(rayAngle, FACING_UP))
+		div = -1;
+	next_touch = get_horizontal_intercept(leet, rayAngle);
 	step = get_horizontal_steps(rayAngle);
-	next_touch.x = intercept.x;
-	next_touch.y = intercept.y;
-	while (next_touch.x >= 0 && next_touch.x <= WINDOW_WIDTH
-		&& next_touch.y >= 0 && next_touch.y <= WINDOW_HEIGHT)
+	while (1)
 	{
-		set_horz_check(&to_check, next_touch, rayAngle);
-		if (map_has_wall_at(leet->ray.map.map, to_check.x, to_check.y))
+		if (map_has_wall_at(leet->ray.map.map,
+				next_touch.x, next_touch.y + div))
 			return (next_touch);
 		else
 		{

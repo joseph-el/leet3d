@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/02 00:49:07 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/10 16:03:38 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:48:05 by mtellami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+#include "leet3d.h"
 
 void	_rotate(t_leet *leet, int sign)
 {

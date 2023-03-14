@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   _angle.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mtellami <mtellami@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 20:49:01 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/10 16:03:18 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/13 22:46:28 by mtellami         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "leet3d.h"
+#include "leet3d.h"
 
 double	_angle(double angle)
 {
