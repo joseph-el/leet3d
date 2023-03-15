@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 11:09:18 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 22:04:04 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:21:36 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void    setting_sounds(t_sound *sound)
         (system(UP), sound->up = 0);
     if (sound->down)
         (system(DOWN), sound->down = 0);
-    if (!sound->general)
-        (system(MUTE));
-    if (sound->general)
-        (system(UNMUTE));
     if (!sound->sound)
         (system(KILL_SOUND), sound->is_run = 0);
     if (sound->sound && sound->sound1 && !sound->is_run)

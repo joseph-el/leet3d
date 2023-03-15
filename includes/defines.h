@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:45:50 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 22:03:50 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:20:58 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
  * @brief Sounds
  */
 
-# define S_RUN "afplay ./sounds/run1.mp3" 
+# define S_RUN "afplay ./sounds/run2.mp3" 
 # define S_SHOT "afplay ./sounds/shoot.mp3" 
 # define S_CLICK "afplay ./sounds/click.mp3 &"
 # define S_ODOOR "afplay ./sounds/odoor.mp3" 

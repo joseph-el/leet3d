@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:36:24 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 11:24:05 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:44:47 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,15 @@ void    mouse_button(int button, int x, int y, t_leet *leet)
         return ;
     ret = get_button(leet->flag, x, y);
     if (leet->flag & HOME && ret & (HOME_PAGE | G_EXIT))
-        (leet->sound.click = 1, leet->flag = ret);
+    {
+        leet->sound.click = 1;
+        if (ret & GAME)
+        {
+            leet->flag = LOADING, leet->flag_img = INGANE;
+            return ;
+        }
+        (leet->flag = ret);
+    }
     if (leet->flag & (MAPS | TEXTURE) && ret & (SET_MAP | SET_TEXTURE | BACK))
         g_graphics(leet, ret);
     if (leet->flag & SETTING && ret & (SET_VOLUME | CONTROLS | SOUNDS | BACK))

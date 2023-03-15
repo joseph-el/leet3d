@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:27:45 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 22:53:31 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:05:26 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
     leet.mlx = mlx_init();
     leet.window = mlx_new_window(leet.mlx, 1280, 720, "Cub3d");
     default_setting(&leet);
-    initialize(&leet, leet.parser);
+    
     
     leet.l_time = clock();
     pthread_create(&_sounds, NULL, sound_, &leet.sound);

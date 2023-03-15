@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:41:10 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 00:00:33 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:41:53 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,28 +20,33 @@ int choose_number(void)
     numbers[0] = 17;
     numbers[1] = 24;
     numbers[2] = 31;
-    index = rand() % 4;
+    index = rand() % 3;
     return (numbers[index]);
 }
 
-voisddg_loading(t_leet *leet, int flag, int destination)
+void   g_loading(t_leet *leet, int flag)
 {
-    float elapsed_time;
+    float       elapsed_time;
+    t_flag      destination;
+    static int  i = 0;
     
-    if (flag & FIRST && !leet->crr_img)
+    destination = (flag == G_HOME) * HOME + \
+                  (flag == P_GAME) * HOME + \
+                  (flag == INGANE) * GAME;
+    if (flag & G_HOME && !leet->crr_img)
         leet->crr_img = 10;
-    else if (flag & LAST && !leet->crr_img)
-        leet->crr_img = choose_number();
-    (float)(clock() - leet->l_time) / CLOCKS_PER_SEC;
-    if (elapsed_time >= 0.2)
+    else if (flag & (P_GAME | INGANE) && !leet->crr_img)
+        (leet->l_time = clock(), leet->crr_img = choose_number());
+    elapsed_time = (float)(clock() - leet->l_time) / CLOCKS_PER_SEC;
+    if (elapsed_time >= 0.1)
     {
-        if (leet->crr_img == 17)
-            return (leet->crr_img = 0, (void)(leet->flag = HOME));
-        else if (leet->crr_img - 1 == 23 || leet->crr_img - 1 == 30 || leet->crr_img - 1 == 38)
-            return (leet->crr_img = 0, (void)(leet->flag = destination));
+        if (i == 7)
+            return (leet->crr_img = 0, leet->flag = destination, \
+                (void)(i = 0));
         mlx_clear_window(leet->mlx, leet->window);
-        mlx_put_image_to_window(leet->mlx, leet->window, leet->img[leet->crr_img++], 0, 0);
-        leet->l_time = clock();
+        mlx_put_image_to_window(leet->mlx, leet->window, \
+            leet->img[leet->crr_img++], 0, 0);
+        (leet->l_time = clock(), i++);
     }
 }
 

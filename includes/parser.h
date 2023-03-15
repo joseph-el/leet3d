@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:19:49 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 08:53:54 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 14:40:29 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@ typedef enum s_setting
 
 typedef enum s_position
 {
-	SOUTH = 123,
-	EAST = 105,
-	WEST = 127,
-	NORTH = 116,
+	SOUTH = 83,
+	EAST = 78,
+	WEST = 87,
+	NORTH = 69,
 }				t_position;
 
 typedef struct s_parcer

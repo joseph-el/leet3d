@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:38:50 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 10:48:54 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:22:40 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void    set_setting(t_leet *leet, t_short ret)
         leet->sound.down = (ret == DVOLUME);
     }
     else if (ret & (MVOLUME | EVOLUME))
+    {
         leet->sound.general = (ret == EVOLUME);
+        if (!leet->sound.general)
+            (system(MUTE));
+        if (leet->sound.general)
+            (system(UNMUTE));
+    }
     else if (ret & (MSOUND | ESOUND))
         leet->sound.sound = (ret == ESOUND);
     else if (ret & (MSFX | ESFX))
@@ -94,7 +100,7 @@ void    g_graphics(t_leet *leet, t_short ret)
 void    g_pause(t_leet *leet, t_short ret)
 {
     if (ret & QUIT_G)
-        leet->flag = LOADING;
+        (leet->flag = LOADING, leet->flag_img = P_GAME);
     else if (ret & P_CONTRL)
         leet->flag = P_CONTRL;
     else if (ret & RESUME)

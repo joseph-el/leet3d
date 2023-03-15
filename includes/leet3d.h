@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:31:02 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 22:43:28 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:31:52 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ typedef struct  s_leet
     void            *window;
     void            *img[39];
     int             crr_img;
+    int            flag_img;
     clock_t         l_time;
     t_flag          flag;
     t_sound         sound;
@@ -242,7 +243,7 @@ void    g_graphics(t_leet *leet, t_short ret);
 void    set_setting(t_leet *leet, t_short ret);
 void    game_events(t_leet *leet, t_flag flag);
 void    mouse_events(int x, int y, t_leet *leet);
-void    g_loading(t_leet *leet, int flag, int destination);
+void   g_loading(t_leet *leet, int flag);
 void    mouse_move(int button, int x, int y, t_leet *leet);
 void    mouse_button(int button, int x, int y, t_leet *leet);
 t_short get_button(t_flag flag, int x, int y);
