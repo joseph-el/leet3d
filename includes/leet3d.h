@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:31:02 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 09:31:52 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 16:49:55 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct  s_leet
     void            *img[39];
     int             crr_img;
     int            flag_img;
+    short           p_health;
     clock_t         l_time;
     t_flag          flag;
     t_sound         sound;

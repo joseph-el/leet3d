@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:29:20 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 10:54:26 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 23:15:35 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,21 @@ void    ft_exit(void)
     exit(42);
 }
 
+    int height;
+    int width;
+
+
 void    game(t_leet *leet)
 {
+    void *shot = mlx_xpm_file_to_image(leet, "./assets/shoot.xpm", &width, &height);
+
     enemy(leet);
     raycasting(leet);
     render(leet);
-    // minimap_(leet);
+    minimap_(leet);
+    mlx_put_image_to_window(leet->mlx, leet->window, shot, 640, 600);
     mlx_destroy_image(leet->mlx, leet->ray.img.img);
+    
 }
 
 void    game_events(t_leet *leet, t_flag flag)
@@ -61,8 +69,16 @@ void    game_events(t_leet *leet, t_flag flag)
     }
     if (flag & ~(GAME | HOME))
         mlx_put_image_to_window(leet->mlx, leet->window, leet->img[img], 0, 0);
+
+
+
+    
+    
     if (flag & GAME)
+    {
         game(leet);
+        
+    }
     mlx_hook(leet->window, 17, 0, (void *)ft_exit, leet);    
     mlx_hook(leet->window, 6, 1L << 2, (void *)mouse_events, leet);
     mlx_hook(leet->window, 2, 0, (void *)key_events, leet);

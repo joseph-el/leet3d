@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:41:10 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 14:41:53 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 23:15:51 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void   g_loading(t_leet *leet, int flag)
     else if (flag & (P_GAME | INGANE) && !leet->crr_img)
         (leet->l_time = clock(), leet->crr_img = choose_number());
     elapsed_time = (float)(clock() - leet->l_time) / CLOCKS_PER_SEC;
-    if (elapsed_time >= 0.1)
+    if (elapsed_time >= 0.2)
     {
         if (i == 7)
             return (leet->crr_img = 0, leet->flag = destination, \

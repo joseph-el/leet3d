@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 01:37:10 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/15 11:03:44 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 20:58:13 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void    default_setting(t_leet *leet)
 {
     get_assets(leet);
     leet->flag = LOADING;
-    leet->cntrl.control_a = 0;
+    leet->cntrl.control_a = 1;
     leet->cntrl.control_b = 0;
-    leet->cntrl.control_c = 1;
+    leet->cntrl.control_c = 0;
     leet->cntrl.loading = 1;
     ft_memset(&leet->sound, 0, sizeof(t_sound));
     leet->sound.sfx = 1;
@@ -30,6 +30,7 @@ void    default_setting(t_leet *leet)
     leet->crr_img = 0;
     leet->enemy.last_time = clock();
     leet->l_time = clock();
+    leet->p_health = 100;
     leet->flag_img = G_HOME;
 }
 
@@ -79,8 +80,8 @@ void	map_initialize(t_leet *leet, t_parser *parser)
 void	initialize(t_leet *leet, t_parser *parser)
 {
 	map_initialize(leet, parser);
-	leet->ray.player.vector.x = parser->p_indices[0] * TILE_SIZE;
-	leet->ray.player.vector.y = parser->p_indices[1] * TILE_SIZE;
+	leet->ray.player.vector.x = parser->p_indices[1] * TILE_SIZE;
+	leet->ray.player.vector.y = parser->p_indices[0] * TILE_SIZE;
 	leet->ray.player.fov = 60 * (M_PI / 180);
 	leet->ray.player.rays = 0x0;
 	leet->ray.player.frame = 0;
@@ -94,6 +95,34 @@ void	initialize(t_leet *leet, t_parser *parser)
 		leet->ray.player.angle = 0;
 }
 
+
+void    get_loading_assets(t_leet *leet)
+{
+    int height;
+    int width;
+    
+    leet->img[17] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L1.xpm", &width, &height);
+    leet->img[18] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L2.xpm", &width, &height);
+    leet->img[19] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L3.xpm", &width, &height);
+    leet->img[20] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L4.xpm", &width, &height);
+    leet->img[21] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L5.xpm", &width, &height);
+    leet->img[22] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L6.xpm", &width, &height);
+    leet->img[23] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L7.xpm", &width, &height);
+    leet->img[24] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L1.xpm", &width, &height);
+    leet->img[25] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L2.xpm", &width, &height);
+    leet->img[26] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L3.xpm", &width, &height);
+    leet->img[27] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L4.xpm", &width, &height);
+    leet->img[28] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L5.xpm", &width, &height);
+    leet->img[29] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L6.xpm", &width, &height);
+    leet->img[30] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L7.xpm", &width, &height);
+    leet->img[31] = mlx_xpm_file_to_image(leet->mlx, "./assets/r1.xpm", &width, &height);
+    leet->img[32] = mlx_xpm_file_to_image(leet->mlx, "./assets/r2.xpm", &width, &height);
+    leet->img[33] = mlx_xpm_file_to_image(leet->mlx, "./assets/r3.xpm", &width, &height);
+    leet->img[34] = mlx_xpm_file_to_image(leet->mlx, "./assets/r4.xpm", &width, &height);
+    leet->img[35] = mlx_xpm_file_to_image(leet->mlx, "./assets/r5.xpm", &width, &height);
+    leet->img[36] = mlx_xpm_file_to_image(leet->mlx, "./assets/r6.xpm", &width, &height);
+    leet->img[37] = mlx_xpm_file_to_image(leet->mlx, "./assets/r7.xpm", &width, &height);
+}
 
 void    get_assets(t_leet *leet)
 {
@@ -110,7 +139,6 @@ void    get_assets(t_leet *leet)
     leet->img[7] = mlx_xpm_file_to_image(leet->mlx, "./assets/efftextu.xpm", &width, &height);
     leet->img[8] = mlx_xpm_file_to_image(leet->mlx, "./assets/effsetting.xpm", &width, &height);
     leet->img[9] = mlx_xpm_file_to_image(leet->mlx, "./assets/effexit.xpm", &width, &height);
-    // <=> loading images :
     leet->img[10] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L1.xpm", &width, &height);
     leet->img[11] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L2.xpm", &width, &height);
     leet->img[12] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L3.xpm", &width, &height);
@@ -118,28 +146,5 @@ void    get_assets(t_leet *leet)
     leet->img[14] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L5.xpm", &width, &height);
     leet->img[15] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L6.xpm", &width, &height);
     leet->img[16] = mlx_xpm_file_to_image(leet->mlx, "./assets/1L7.xpm", &width, &height);
-    
-    leet->img[17] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L1.xpm", &width, &height);
-    leet->img[18] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L2.xpm", &width, &height);
-    leet->img[19] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L3.xpm", &width, &height);
-    leet->img[20] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L4.xpm", &width, &height);
-    leet->img[21] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L5.xpm", &width, &height);
-    leet->img[22] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L6.xpm", &width, &height);
-    leet->img[23] = mlx_xpm_file_to_image(leet->mlx, "./assets/2L7.xpm", &width, &height);
-    
-    leet->img[24] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L1.xpm", &width, &height);
-    leet->img[25] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L2.xpm", &width, &height);
-    leet->img[26] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L3.xpm", &width, &height);
-    leet->img[27] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L4.xpm", &width, &height);
-    leet->img[28] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L5.xpm", &width, &height);
-    leet->img[29] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L6.xpm", &width, &height);
-    leet->img[30] = mlx_xpm_file_to_image(leet->mlx, "./assets/3L7.xpm", &width, &height);
-    
-    leet->img[31] = mlx_xpm_file_to_image(leet->mlx, "./assets/r1.xpm", &width, &height);
-    leet->img[32] = mlx_xpm_file_to_image(leet->mlx, "./assets/r2.xpm", &width, &height);
-    leet->img[33] = mlx_xpm_file_to_image(leet->mlx, "./assets/r3.xpm", &width, &height);
-    leet->img[34] = mlx_xpm_file_to_image(leet->mlx, "./assets/r4.xpm", &width, &height);
-    leet->img[35] = mlx_xpm_file_to_image(leet->mlx, "./assets/r5.xpm", &width, &height);
-    leet->img[36] = mlx_xpm_file_to_image(leet->mlx, "./assets/r6.xpm", &width, &height);
-    leet->img[37] = mlx_xpm_file_to_image(leet->mlx, "./assets/r7.xpm", &width, &height);
+    get_loading_assets(leet);
 }

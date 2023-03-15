@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:45:50 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 11:20:58 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/15 23:40:16 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@
 # define S_SOUND1 "afplay ./sounds/music1.mp3 &" 
 # define S_SOUND2 "afplay ./sounds/music2.mp3 &" 
 # define S_SOUND3 "afplay ./sounds/music3.mp3 &" 
-# define S_ENEMY_SHOT "afplay ./sounds/enemy_shoot.wav &"
+# define S_ENEMY_SHOT "afplay ./sounds/enemy_shot.mp3 &"
 
 # define MUTE "osascript -e \"set volume with output muted\""
 # define UNMUTE "osascript -e \"set volume without output muted\""
@@ -77,8 +77,8 @@
 
 # define TILE_SIZE 64
 # define NUM_RAYS 1280
-# define MOVE_SPEED 5.0
-# define ROTATE_SPEED 5.0
+# define MOVE_SPEED 20.0
+# define ROTATE_SPEED 20.0
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
 # define TEXTURE_DIMENTION 64
