@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:19:49 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 14:40:29 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/20 07:20:03 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_parcer
 	int			p_indices[2];
 	int			height;
 	int			width;
+	short		n_texture;
 	t_position	position;
 }				t_parser;
 
@@ -52,10 +53,12 @@ t_position		get_size(t_parser *container);
 bool			extensions(char *path);
 int				space(char *line, int flag);
 char			**map_size(t_parser **container);
+void			last_line(char **line, int m_size);
 char			**realloc_arrays(char ***arrays, char *new_, bool *space);
 void			analysis_map(t_parser *data);
+void			error_color(char *line, int *index);
 void			set_data(t_parser **container, int fd_map);
-void	        door(char **map, int i, int j, int m_size[2]);
+void			door(char **map, int i, int j, int m_size[2]);
 void			container_tools(t_parser **container, int flag);
 void			position_(t_parser *data, int i, int j, int m_size[2]);
 void			set_texture(t_parser **container, char *line, t_setting ret);
@@ -64,4 +67,4 @@ void			checkup_line(t_parser *data, char *line, int index, int flag);
 void			analysis_rgb(t_parser **container, char **colors,
 					t_setting flag);
 
-# endif
+#endif

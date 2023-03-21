@@ -6,13 +6,13 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 23:49:13 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/02/26 16:05:04 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/19 23:20:08 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libtools.h"
 
-int ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	long	ret;
 	int		sign;

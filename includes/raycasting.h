@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:19:17 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 18:01:29 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/19 16:00:05 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@
 typedef enum e_hit
 {
 	_SPACE,
+	_EXIT,
+	MEDKIT,
 	WALL,
 	DOOR,
 	ENEMY,
 	OUT_RANGE,
 	HORIZONTAL_HIT,
 	VERTICAL_HIT,
-}	t_hit;
+}				t_hit;
 
-enum e_direction
+enum			e_direction
 {
 	FACING_UP,
 	FACING_DOWN,
@@ -34,7 +36,7 @@ enum e_direction
 	FACING_LEFT,
 };
 
-enum e_key
+enum			e_key
 {
 	ESC_KEY = 53,
 	W_KEY = 13,
@@ -49,9 +51,9 @@ enum e_key
 
 typedef struct s_vector
 {
-	double	x;
-	double	y;
-}	t_vector;
+	double		x;
+	double		y;
+}				t_vector;
 
 typedef struct s_ray
 {
@@ -61,14 +63,14 @@ typedef struct s_ray
 	int			wall_height;
 	t_hit		hit_side;
 	t_hit		hit_content;
-}	t_ray;
+}				t_ray;
 
 typedef struct s_rgb
 {
-	int	r;
-	int	g;
-	int	b;
-}	t_rgb;
+	int			r;
+	int			g;
+	int			b;
+}				t_rgb;
 
 typedef struct s_player
 {
@@ -77,7 +79,7 @@ typedef struct s_player
 	t_ray		*rays;
 	t_vector	vector;
 	int			frame;
-}	t_player;
+}				t_player;
 
 typedef struct s_img
 {
@@ -86,27 +88,30 @@ typedef struct s_img
 	int			bits_per_pixel;
 	int			line_length;
 	int			endian;
-}	t_img;
+}				t_img;
 
 typedef struct s_map
 {
-	t_img	_north;
-	t_img	_south;
-	t_img	_west;
-	t_img	_east;
-	t_img	_enemy;
-	t_img	_door;
-	t_img	*fire;
-	t_rgb	_floor;
-	t_rgb	_ceil;
-	char	**map;
-}	t_map;
+	t_img		_north;
+	t_img		_south;
+	t_img		_west;
+	t_img		_east;
+	t_img		_enemy;
+	t_img		_door;
+	t_img		medkit;
+	t_img		*fire;
+	t_rgb		_floor;
+	t_rgb		_ceil;
+	char		**map;
+}				t_map;
 
 typedef struct s_raycasting
 {
 	t_map		map;
 	t_img		img;
+	t_img		ceil;
+	t_img		floor;
 	t_player	player;
-}	t_raycasting;
+}				t_raycasting;
 
 #endif

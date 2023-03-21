@@ -6,11 +6,11 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:23:51 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/14 08:30:29 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/19 21:01:41 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/leet3d.h"
+#include "leet3d.h"
 
 char	**map_size(t_parser **container)
 {
@@ -43,10 +43,10 @@ char	**map_size(t_parser **container)
 
 void	door(char **map, int i, int j, int m_size[2])
 {
-	int ret;
+	int	ret;
 
 	ret = 0;
-	if (i - 1 >= 0 && i - 1 < m_size[0] && i + 1 >= 0 && i + 1 < m_size[0] && \
+	if (i - 1 >= 0 && i + 1 < m_size[0] && i + 1 >= 0 && i + 1 < m_size[0] && \
 		j - 1 >= 0 && j - 1 < m_size[1] && j + 1 >= 0 && j + 1 < m_size[1])
 		ret = (map[i - 1][j] == '1' && map[i + 1][j] == '1') * HORIZONTAL + \
 			(map[i][j - 1] == '1' && map[i][j + 1] == '1') * VERTICAL;

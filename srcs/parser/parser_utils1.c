@@ -6,11 +6,11 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 08:21:48 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/15 20:56:46 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/20 07:19:37 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../includes/leet3d.h"
+#include "leet3d.h"
 
 t_position	get_position(t_parser *container)
 {
@@ -48,12 +48,13 @@ void	set_texture(t_parser **container, char *line, t_setting ret)
 
 	(void)fd_texture;
 	i = (int)log2(ret);
+	if ((*container)->texture[i])
+		return (error_(ERR_MISSING, 0, ERROR));
 	while (*line)
 	{
-		while (*line != '\n' && ft_isspace(*line) && ft_memcmp(line, "./",
-				sizeof("./")))
+		while (*line != '\n' && ft_isspace(*line))
 			line++;
-		if (!*line || *line != '.')
+		if (!*line || *line == '\n')
 			return (error_(ERR_PATH, 0, ERROR));
 		(*container)->texture[i] = ft_strndup(line, ft_strlen(line) - 1);
 		fd_texture = open((*container)->texture[i], O_RDONLY);
@@ -68,13 +69,16 @@ void	set_colors(t_parser **container, char *line, t_setting flag)
 	char	**colors;
 	char	*tmp;
 	int		index;
+	int		i;
 
 	while (*line && ft_isspace(*line))
 		line++;
-	if (!*line || !ft_isdigit(*line) || !ft_strchr(line, ','))
-		return (error_(ERR_COLORS, 0, ERROR));
+	i = 0;
+	while (line[i])
+		if (!ft_strchr("1234567890 ,\n", line[i++]))
+			return (error_(ERR_COLORS, 0, ERROR));
+	error_color(line, &index);
 	colors = ft_split(line, ',');
-	index = 0;
 	while (colors[index])
 		index++;
 	if (index > 3 || index < 3)
@@ -133,4 +137,5 @@ void	analysis_map(t_parser *data)
 	}
 	data->width = ft_strlen(*data->map);
 	data->height = i;
+	last_line(data->map, data->height - 2);
 }

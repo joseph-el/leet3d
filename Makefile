@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/14 08:24:23 by yoel-idr          #+#    #+#              #
-#    Updated: 2023/03/15 14:41:24 by yoel-idr         ###   ########.fr        #
+#    Created: 2023/03/19 08:39:19 by yoel-idr          #+#    #+#              #
+#    Updated: 2023/03/20 00:00:14 by yoel-idr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,10 @@ CC 					:= cc
 RM					:= rm -f
 SRCS 				:= srcs/
 INCLUDES			:= includes/
-HEADERS 			:= parser.h leet3d.h raycasting.h
+HEADERS 			:= parser.h leet3d.h raycasting.h defiens.h
 HEADERS 			:= $(addprefix $(INCLUDES), $(HEADERS))
-FLAGS				:= -Wall -Wextra -Werror -fsanitize=address -g
-XLIB				:= -lmlx -framework OpenGL -framework AppKit
+FLAGS				:= -Wall -Wextra -Werror
+XLIB				:=  -I /usr/X11/include -L /usr/X11/lib -l mlx -framework OpenGL -framework AppKit
 
 COM_COLOR   		:= \033[0;34m
 OBJ_COLOR   		:= \033[0;36m
@@ -44,7 +44,9 @@ EVENTS_FILES		:=  events/events.c \
 						events/events_utils3.c \
 						events/button.c \
 
-RAYCASTING_FILES	:=  raycasting/minimap.c \
+RAYCASTING_FILES	:=  raycasting/open_door.c \
+						raycasting/wall_collision.c \
+						raycasting/minimap.c \
 						raycasting/minimap_utils.c \
 						raycasting/_angle.c \
 						raycasting/_direction.c \
@@ -57,9 +59,14 @@ RAYCASTING_FILES	:=  raycasting/minimap.c \
 						raycasting/wall_pixel.c \
 						raycasting/wall_render.c \
 
-UTILS				:=  utils/enemy.c \
+UTILS				:=  utils/enemy_sync.c \
+						utils/draw_assets.c \
+						utils/get_xpm.c \
+						utils/enemy.c \
+						utils/g_utils.c \
 						utils/enemy_utils.c \
 						utils/initialize.c \
+						utils/initialize_utils.c \
 						utils/destroy.c \
 						utils/error.c \
 						utils/sound.c \
@@ -70,6 +77,7 @@ FILES				:=  $(PARSER_FILES) \
 						$(LEET3D_FILE) \
 						$(EVENTS_FILES) \
 						$(RAYCASTING_FILES) \
+
 
 FILES 				:= $(addprefix $(SRCS), $(FILES)) 
 OBJS 				:= $(FILES:%.c=%.o)
@@ -88,15 +96,11 @@ $(LIBTOOLS)			: 	$(addprefix $(LIBTOOLS_PATH), libtools.h)
 
 .c.o		 		:	$(HEADERS)
 							@printf "%-100.900b\r" "$(COM_COLOR)$(COM_STRING) $(OBJ_COLOR)$(@)$(NO_COLOR)\n";
-							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH)
-
-
-
-
+							@$(CC) $(FLAGS) -c $< -o $@ -I $(INCLUDES) -I $(LIBTOOLS_PATH) -I /usr/X11/include -Imlx
 
 clean   			:	
-							@printf "	   %b %b %b\t" "$(BLUE) $(DELETE)" "$(GREEN)       $(LIBT)" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 
-							@printf "   %b %b  %b        " "$(BLUE) $(DELETE)" "$(GREEN)      $(LEET_3D)" "$(OK_COLOR)       $(OK_STRING) \n$(RESET)" 
+							@printf "	   %b %b %b\t" "$(COM_COLOR) $(DELETE)" "$(OK_COLOR)       $(LIBT)" "$(OK_COLOR) $(OK_STRING) \n$(RESET)" 
+							@printf "   %b %b  %b        " "$(COM_COLOR) $(DELETE)" "$(OK_COLOR)      $(LEET_3D)" "$(OK_COLOR)       $(OK_STRING) \n$(RESET)" 
 							@$(RM) $(OBJS)
 							@make -C $(LIBTOOLS_PATH) clean
 
@@ -108,6 +112,7 @@ fclean 				:  	clean
 re 					: 	fclean all
 
 .PHONY 				: 	all clean fclean bonus re
+
 
 
 

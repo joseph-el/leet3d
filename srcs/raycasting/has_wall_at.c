@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/01 21:53:02 by mtellami          #+#    #+#             */
-/*   Updated: 2023/03/14 18:01:46 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/21 21:43:55 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	map_has_wall_at(char **map, double x, double y)
 		return (DOOR);
 	else if (map[i][j] == 'Z')
 		return (ENEMY);
+	// else if (map[i][j] == 'K')
+	// 	return (MEDKIT);
 	else
 		return (WALL);
 }
