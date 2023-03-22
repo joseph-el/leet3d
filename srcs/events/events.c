@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:37:31 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/21 21:33:11 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/21 23:14:26 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 void	game(t_leet *leet)
 {
-	// enemy(leet);
-	// open_door(leet);
+	enemy(leet);
+	open_door(leet);
 	raycasting(leet);
 	render(leet);
 	minimap_(leet);
+	// usleep(250);
 	draw_gun(leet);
-	// is_enemy(leet, leet->ray.player.vector.x, leet->ray.player.vector.y);
-	// is_medkit(leet, leet->ray.player.vector.x, leet->ray.player.vector.y);
+	is_enemy(leet, leet->ray.player.vector.x, leet->ray.player.vector.y);
+	is_medkit(leet, leet->ray.player.vector.x, leet->ray.player.vector.y);
 	draw_healty(leet);
 	mlx_destroy_image(leet->mlx, leet->ray.img.img);
 	mlx_destroy_image(leet->mlx, leet->minimap.build.img);
