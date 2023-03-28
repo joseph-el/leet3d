@@ -6,13 +6,13 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:43:29 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/19 21:30:59 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/28 00:03:30 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "leet3d.h"
 
-void	mouse_events(int x, int y, t_leet *leet)
+void	~mouse_events(int x, int y, t_leet *leet)
 {
 	t_short	ret;
 	int		img;

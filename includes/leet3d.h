@@ -6,7 +6,7 @@
 /*   By: yoel-idr <yoel-idr@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/18 22:20:09 by yoel-idr          #+#    #+#             */
-/*   Updated: 2023/03/19 22:09:38 by yoel-idr         ###   ########.fr       */
+/*   Updated: 2023/03/28 00:05:46 by yoel-idr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef enum s_flag
 	G_EXIT = 1ULL << 42,
 	DIE = 1ULL << 43,
 	HOME_PAGE = (SETTING | MAPS | GAME | TEXTURE)
-}							t_flag;
+}							t_flag
 
 typedef struct s_sound
 {
